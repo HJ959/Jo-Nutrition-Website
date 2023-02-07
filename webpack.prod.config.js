@@ -10,7 +10,40 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      inject: true,
+      chunks: ['index'],
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/about.html',
+      inject: true,
+      chunks: ['index'],
+      filename: 'about.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/eating-disorders.html',
+      inject: true,
+      chunks: ['index'],
+      filename: 'eating-disorders.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/consultations.html',
+      inject: true,
+      chunks: ['index'],
+      filename: 'consultations.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/qualifications.html',
+      inject: true,
+      chunks: ['index'],
+      filename: 'qualifications.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/contact.html',
+      inject: true,
+      chunks: ['index'],
+      filename: 'contact.html'
     })
   ],
   module: {
