@@ -1,0 +1,125 @@
+:root {
+    /* Setup some variables for the colour palette */
+    --green: rgb(159, 214, 224);
+    --purple: rgb(206, 202, 230);
+    --navy: rgb(78, 109, 179);
+    --grey: rgb(219, 231, 242);
+    --white: rgb(250, 250, 250);
+    --black: rgb(20, 20, 20);
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(var(--grey), var(--white));
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 0.9fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    justify-content: stretch;
+    align-content: center;
+    justify-items: end;
+    align-items: stretch;
+    height: 88%;
+}
+
+.BioText {
+    grid-area: 1 / 1 / 4 / 3;
+}
+
+.JoHomeImage {
+    grid-area: 1 / 2 / 4 / 5;
+    background: url("media/JoImageHome.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+}
+
+.defaultMarginPadding {
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background: var(--grey);
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: var(--black);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: var(--green);
+    color: var(--navy);
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: var(--navy);
+    color: var(--grey);
+}
+
+.dropShadow {
+    -webkit-box-shadow: 0px 0px 6px 0px var(--grey);
+    box-shadow: 0px 0px 6px 0px var(--grey);
+}
+
+.containerAbout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+    width: 100%;
+    
+    grid-template-areas:
+        "aboutJoImage aboutJoImage aboutJoImage aboutJoImage"
+        "AboutP1 AboutP1 AboutP1 AboutP1"
+        "AboutP2 AboutP2 AboutP2 AboutP2";
+}
+
+.aboutJoImage {
+    grid-area: aboutJoImage;
+    background: url("media/JoImageAbout.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 16px;
+    height: 100%;
+    width: 100%;
+}
+
+.AboutP1 {
+    grid-area: AboutP1;
+}
+
+.AboutP2 {
+    grid-area: AboutP2;
+}
