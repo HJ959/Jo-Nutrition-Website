@@ -16,6 +16,7 @@ module.exports = {
   devServer: {
     static: './dev',
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -55,7 +56,8 @@ module.exports = {
     })
   ],
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
