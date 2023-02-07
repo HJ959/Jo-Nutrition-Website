@@ -67,11 +67,8 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.(woff(2)?|ttf|eot)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-        generator: {
-          filename: './[name][ext]',
-        },
       },
     ],
   },
