@@ -1,0 +1,43 @@
+.containerAbout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 10fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-areas:
+        "eatingDisordersTitle eatingDisordersTitle eatingDisordersTitle"
+        "eatingDisordersInfo eatingDisordersInfo eatingDisordersInfo";
+}
+
+.eatingDisordersTitle {
+    grid-area: eatingDisordersTitle;
+}
+
+.eatingDisordersInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "EDP1 EDP1 EDP1"
+        "EDP2 EDP2 EDP2"
+        "EDP3 EDP3 EDP3";
+    grid-area: eatingDisordersInfo;
+}
+
+.EDP1 {
+    grid-area: EDP1;
+}
+
+.EDP2 {
+    grid-area: EDP2;
+}
+
+.EDP3 {
+    grid-area: EDP3;
+}

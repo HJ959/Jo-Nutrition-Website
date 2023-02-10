@@ -6,6 +6,8 @@ module.exports = {
 
   entry: {
     index: "./src/index.js",
+    about: "./src/about.js",
+    eatingDisorders: "./src/eating-disorders.js"
   },
 
   output: {
@@ -23,13 +25,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/about.html',
       inject: true,
-      chunks: ['index'],
+      chunks: ['about'],
       filename: 'about.html'
     }),
     new HtmlWebpackPlugin({
       template: './src/eating-disorders.html',
       inject: true,
-      chunks: ['index'],
+      chunks: ['eatingDisorders'],
       filename: 'eating-disorders.html'
     }),
     new HtmlWebpackPlugin({
