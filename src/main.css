@@ -10,8 +10,8 @@
 
 html,
 body {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -21,8 +21,8 @@ body {
 }
 
 .defaultMarginPadding {
-    margin-left: 1%;
-    margin-right: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 1%;
 }
 
@@ -33,8 +33,11 @@ body {
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background: var(--grey);
-    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    backdrop-filter: blur(10px);
+    border-radius: 64px;
 }
 
 /* Style the links inside the navigation bar */
@@ -51,12 +54,17 @@ body {
 .topnav a:hover {
     background-color: var(--green);
     color: var(--navy);
+    filter: drop-shadow(1px 1px 2px var(--green));
+    border-radius: 64px;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-    background-color: var(--navy);
-    color: var(--grey);
+    color: var(--black);
+    border-radius: 64px;
+    border: 2px solid var(--purple);
+    border-radius: 32px;
+    border-style: none none solid none;
 }
 
 /* add a footer */
@@ -73,4 +81,9 @@ footer {
 a {
     color: var(--black);
     font-weight: bold;
+}
+
+.navSpacer {
+    width: 100%;
+    height: 6%;
 }
