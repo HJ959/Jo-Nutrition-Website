@@ -19,12 +19,14 @@
 
 .aboutJoImage {
     grid-area: aboutJoImage;
-    background: url("media/JoImageAbout.jpg");
-    background-position: center;
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.joImageAbout {
     border-radius: 16px;
-    height: 95vh;
-    width: 100vw;
+    width: 40vw;
+    border-radius: 360px;
 }
 
 .AboutP1 {

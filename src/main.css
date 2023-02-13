@@ -6,6 +6,14 @@
     --grey: rgb(219, 231, 242);
     --white: rgb(250, 250, 250);
     --black: rgb(20, 20, 20);
+
+    /* Setup some faded versions of the colour pallete  */
+    --green-fade: rgba(159, 214, 224, 0.3);
+    --purple-fade: rgba(206, 202, 230, 0.3);
+    --navy-fade: rgba(78, 109, 179, 0.3);
+    --grey-fade: rgba(219, 231, 242, 0.3);
+    --white-fade: rgba(250, 250, 250, 0.3);
+    --black-fade: rgba(20, 20, 20, 0.3);
 }
 
 html,
@@ -20,7 +28,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.defaultMarginPadding {
+.defaultMargin {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 1%;
@@ -38,6 +46,10 @@ body {
     top: 0;
     backdrop-filter: blur(10px);
     border-radius: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 /* Style the links inside the navigation bar */
@@ -48,13 +60,14 @@ body {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    margin-left: 2%;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: var(--green);
+    background-color: var(--purple);
     color: var(--navy);
-    filter: drop-shadow(1px 1px 2px var(--green));
+    filter: drop-shadow(1px 1px 2px var(--purple));
     border-radius: 64px;
 }
 
@@ -62,9 +75,22 @@ body {
 .topnav a.active {
     color: var(--black);
     border-radius: 64px;
-    border: 2px solid var(--purple);
+}
+
+/* Generic minimal line */
+.slimBorder {
+    border: 1px solid var(--purple);
+    border-style: none none solid solid;
+}
+
+/* Purple line spacer to use inbetween text blocks */
+.purpleLine {
+    border: 1px solid var(--purple);
+    border-style: solid;
+    width: 100%;
+    height: 100%;
+    /* filter: drop-shadow(1px 1px 1px var(--green)); */
     border-radius: 32px;
-    border-style: none none solid none;
 }
 
 /* add a footer */
@@ -73,9 +99,10 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: var(--green);
+    background-color: var(--green-fade);
     color: var(--white);
     text-align: center;
+    backdrop-filter: blur(10px);
 }
 
 a {
