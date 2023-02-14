@@ -1,9 +1,9 @@
-@media (0px <=width <=800px) {
+@media screen and (max-width: 600px) {
     /* Mobile styles */
 
 }
 
-@media (801px <=width <=2000px) {
+@media screen and (min-width: 601px) {
 
     /* Desktop styles */
     .container {
@@ -78,8 +78,26 @@
         grid-area: p3;
     }
 
-    .packageOf6 {
-        grid-area: packageOf6;
+    .p4 {
+        grid-area: p4;
     }
+    .p5 {
+        grid-area: p5;
+    }
+}
 
+.consultBox {
+    padding: 5%;
+    -webkit-box-shadow: 5px 5px 30px -30px var(--navy);
+    box-shadow: 5px 5px 30px -30px var(--navy);
+    border-radius: 32px;
+}
+
+.consultBox:hover {
+    padding: 5%;
+    -webkit-box-shadow: 5px 5px 30px -30px var(--navy);
+    box-shadow: 5px 5px 30px -30px var(--navy);
+    border-radius: 32px;
+    background-color: var(--purple-fade);
+    transition: 0.5s;
 }

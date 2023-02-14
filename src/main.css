@@ -31,11 +31,7 @@ body {
     line-height: 2;
 }
 
-.defaultMargin {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 1%;
-}
+
 
 .dropShadow {
     -webkit-box-shadow: 0px 0px 6px 0px var(--grey);
@@ -91,6 +87,7 @@ body {
     width: 100%;
     /* filter: drop-shadow(1px 1px 1px var(--green)); */
     border-radius: 32px;
+    margin-bottom: 2%;
 }
 
 /* add a footer */
@@ -141,6 +138,20 @@ ul li::before {
         text-align: left;
     }
     .navSpacer {
-        height: 35vmin;
+        height: 50vmin;
+    }
+    .defaultMargin {
+        margin-left: 7%;
+        margin-right: 7%;
+        margin-top: 1%;
+    }
+}
+
+/* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
+@media screen and (min-width: 601px) {
+    .defaultMargin {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 1%;
     }
 }
