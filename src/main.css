@@ -31,8 +31,6 @@ body {
     line-height: 2;
 }
 
-
-
 .dropShadow {
     -webkit-box-shadow: 0px 0px 6px 0px var(--grey);
     box-shadow: 0px 0px 6px 0px var(--grey);
@@ -130,28 +128,83 @@ ul li::before {
     /* Also needed for space (tweak if needed) */
 }
 
+.collapsable {
+    display: block;
+}
+
 /* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
 @media screen and (max-width: 600px) {
     .topnav a {
         float: none;
-        display: block;
+        display: none;
         text-align: left;
     }
+
     .navSpacer {
-        height: 50vmin;
+        height: 15vh;
     }
+
     .defaultMargin {
         margin-left: 7%;
         margin-right: 7%;
         margin-top: 1%;
     }
+    .material-symbols-outlined {
+        font-variation-settings:
+            'FILL'0,
+            'wght'700,
+            'GRAD'200,
+            'opsz'48;
+        /* display: none; */
+        float: left;
+        color: var(--black);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        margin-left: 2%;
+        display: block;
+        font-size: 2em;
+    }
+
+    .material-symbols-outlined:hover {
+        color: var(--navy);
+        translate: 0px 2px;
+        transition: 0.1s;
+    }
 }
 
 /* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 601px) and (max-width: 1200px) {
+    .topnav a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .navSpacer {
+        height: 15vh;
+    }
+
     .defaultMargin {
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
         margin-top: 1%;
+    }
+
+    .material-symbols-outlined {
+        display: none;
+    }
+}
+
+/* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
+@media screen and (min-width: 1201px) {
+    .defaultMargin {
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 1%;
+    }
+
+    .material-symbols-outlined {
+        display: none;
     }
 }

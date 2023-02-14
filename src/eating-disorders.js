@@ -4,3 +4,5 @@ import './normalize.css'
 import './main.css'
 // specific css for home page
 import './eating-disorders.css'
+// import some useful UX scripts
+import './scripts'

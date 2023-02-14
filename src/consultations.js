@@ -4,3 +4,5 @@ import './normalize.css'
 import './main.css'
 // specific css for about page
 import './consultations.css'
+// import some useful UX scripts
+import './scripts'

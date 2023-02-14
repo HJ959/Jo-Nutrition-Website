@@ -1,103 +1,31 @@
-@media screen and (max-width: 600px) {
-    /* Mobile styles */
-
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-areas:
+        "consultInfo";
 }
 
-@media screen and (min-width: 601px) {
-
-    /* Desktop styles */
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 2fr 2fr 1fr;
-        gap: 0px 0px;
-        grid-auto-flow: row;
-        justify-content: center;
-        align-content: center;
-        justify-items: stretch;
-        align-items: stretch;
-        grid-template-areas:
-            "consultations consultations consultations"
-            "bariatric bariatric bariatric"
-            "packageOf6 packageOf6 packageOf6";
-    }
-
-    .consultations {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 5fr;
-        gap: 0px 0px;
-        grid-auto-flow: row;
-        grid-template-areas:
-            "title title title"
-            "option1 option2 option3";
-        grid-area: consultations;
-    }
-
-    .title {
-        grid-area: title;
-    }
-
-    .option1 {
-        grid-area: option1;
-    }
-
-    .option2 {
-        grid-area: option2;
-    }
-
-    .option3 {
-        grid-area: option3;
-    }
-
-    .bariatric {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 5fr;
-        gap: 0px 0px;
-        grid-auto-flow: row;
-        grid-template-areas:
-            "bariatricTitle bariatricTitle bariatricTitle"
-            "p1 p2 p3";
-        grid-area: bariatric;
-    }
-
-    .bariatricTitle {
-        grid-area: bariatricTitle;
-    }
-
-    .p1 {
-        grid-area: p1;
-    }
-
-    .p2 {
-        grid-area: p2;
-    }
-
-    .p3 {
-        grid-area: p3;
-    }
-
-    .p4 {
-        grid-area: p4;
-    }
-    .p5 {
-        grid-area: p5;
-    }
+.eatingDisordersInfo {
+    grid-area: eatingDisordersInfo;
 }
 
 .consultBox {
-    padding: 5%;
+    padding: 1%;
     -webkit-box-shadow: 5px 5px 30px -30px var(--navy);
     box-shadow: 5px 5px 30px -30px var(--navy);
     border-radius: 32px;
 }
 
 .consultBox:hover {
-    padding: 5%;
     -webkit-box-shadow: 5px 5px 30px -30px var(--navy);
     box-shadow: 5px 5px 30px -30px var(--navy);
     border-radius: 32px;
-    background-color: var(--purple-fade);
     transition: 0.5s;
 }

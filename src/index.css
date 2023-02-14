@@ -7,13 +7,11 @@
         grid-auto-columns: 1fr;
         gap: 0px 0px;
         grid-auto-flow: row;
-        justify-content: center;
-        align-content: center;
-        justify-items: center;
-        align-items: center;
         grid-template-areas:
             "JoImage JoImage"
             "info info";
+        width: 100%;
+        height: 100vh;
     }
 
     .info {
@@ -27,7 +25,7 @@
     }
 
     .homeImage {
-        width: 40vw;
+        width: 80vmin;
         border-radius: 360px;
     }
 }
@@ -35,7 +33,6 @@
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (min-width: 601px) {
     .container {
-        height: 90%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
@@ -48,6 +45,8 @@
         align-items: center;
         grid-template-areas:
             "info JoImage";
+        width: 100%;
+        height: 100vh;
     }
 
     .info {
@@ -61,7 +60,8 @@
     }
 
     .homeImage {
-        width: 40vw;
+        width: 40vmax;
+        height: 40vmax;
         border-radius: 360px;
     }
 }

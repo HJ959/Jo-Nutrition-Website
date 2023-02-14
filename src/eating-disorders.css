@@ -12,10 +12,6 @@
         "eatingDisordersInfo";
 }
 
-.eatingDisordersTitle {
-    grid-area: eatingDisordersTitle;
-}
-
 .eatingDisordersInfo {
     grid-area: eatingDisordersInfo;
 }
