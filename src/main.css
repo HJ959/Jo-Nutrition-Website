@@ -26,6 +26,9 @@ body {
     background-color: var(--white);
     overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-size: 2vh;
+    line-height: 2;
 }
 
 .defaultMargin {
@@ -59,22 +62,20 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1em;
     margin-left: 2%;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: var(--purple);
     color: var(--navy);
-    filter: drop-shadow(1px 1px 2px var(--purple));
-    border-radius: 64px;
+    translate: 0px 2px;
+    transition: 0.1s;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-    color: var(--black);
-    border-radius: 64px;
+    color: var(--navy);
 }
 
 /* Generic minimal line */
@@ -88,7 +89,6 @@ body {
     border: 1px solid var(--purple);
     border-style: solid;
     width: 100%;
-    height: 100%;
     /* filter: drop-shadow(1px 1px 1px var(--green)); */
     border-radius: 32px;
 }
@@ -112,5 +112,35 @@ a {
 
 .navSpacer {
     width: 100%;
-    height: 6%;
+    height: 5vmin;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li::before {
+    /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    content: "\2022";
+    color: var(--green);
+    display: inline-block;
+    font-weight: bolder;
+    font-size: 2vh;
+    /* Needed to add space between the bullet and the text */
+    width: 1em;
+    /* Also needed for space (tweak if needed) */
+    margin-left: -1em;
+    /* Also needed for space (tweak if needed) */
+}
+
+/* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
+@media screen and (max-width: 600px) {
+    .topnav a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .navSpacer {
+        height: 35vmin;
+    }
 }

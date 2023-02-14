@@ -2,20 +2,17 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    grid-auto-columns: 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
-    justify-content: center;
+        justify-content: center;
     align-content: center;
     justify-items: stretch;
     align-items: stretch;
     grid-template-areas:
-        "eatingDisordersInfo";
+        "info";
 }
 
-.eatingDisordersTitle {
-    grid-area: eatingDisordersTitle;
-}
-
-.eatingDisordersInfo {
-    grid-area: eatingDisordersInfo;
+.info {
+    grid-area: info;
 }

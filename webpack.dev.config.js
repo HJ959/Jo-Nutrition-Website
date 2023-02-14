@@ -8,7 +8,8 @@ module.exports = {
     index: "./src/index.js",
     about: "./src/about.js",
     eatingDisorders: "./src/eating-disorders.js",
-    consultations: "./src/consultations.js"
+    consultations: "./src/consultations.js",
+    qualifications: "./src/qualifications.js"
   },
 
   output: {
@@ -48,7 +49,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/qualifications.html',
       inject: true,
-      chunks: ['index'],
+      chunks: ['qualifications'],
       filename: 'qualifications.html'
     }),
     new HtmlWebpackPlugin({
