@@ -1,24 +1,25 @@
 const navbarItems = document.getElementsByClassName("collapsable")
 export function navMenuMover() {
-  if (navbarItems[0].style.display === "block") {
+  if (navbarItems[0].style.display === "none") {
     for (var i = 0; i < navbarItems.length; i++) {
-      navbarItems[i].style.display = "none"
+      navbarItems[i].style.display = "block"
     }
   } else {
     for (var i = 0; i < navbarItems.length; i++) {
-      navbarItems[i].style.display = "block"
+      navbarItems[i].style.display = "none"
     }
   }
 }
 window.navMenuMover = navMenuMover
 document.getElementById("burger").addEventListener("click", navMenuMover)
 
-document.addEventListener("resize", bigWindowMenuShower)
+window.addEventListener("resize", bigWindowMenuShower)
 
 export function bigWindowMenuShower(event) {
   if (window.innerWidth > 600) {
     for (var i = 0; i < navbarItems.length; i++) {
       navbarItems[i].style.display = "block"
+      console.log("made visible")
     }
   }
 }

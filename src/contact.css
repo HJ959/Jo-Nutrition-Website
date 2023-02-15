@@ -5,23 +5,14 @@
     grid-auto-columns: 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
-        justify-content: center;
+    justify-content: center;
     align-content: center;
-    justify-items: stretch;
-    align-items: stretch;
+    justify-items: center;
+    align-items: center;
     grid-template-areas:
         "info";
 }
 
 .info {
     grid-area: info;
-}
-
-.affilatesLogo {
-    background-color: var(--green);
-}
-
-.logos {
-    max-width: 100%;
-    height: auto;
 }

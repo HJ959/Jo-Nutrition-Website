@@ -17,6 +17,10 @@
 <script defer src="index.js"></script></head>
 
 <body>
+    <div id="loadOverlay"
+        style="background-color:rgb(255, 255, 255); position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
+    </div>
+
 
     <nav class="topnav">
         <span id="burger" class="material-symbols-outlined">
@@ -33,22 +37,24 @@
     <div class="navSpacer"></div>
 
     <div class="container">
-        <div class="info defaultMargin">
-            <h1>Would you like to escape from constant thoughts about food, weight and body shape?</h1>
-            <div class="purpleLine"></div>
-            <h2>Are you worried about yourself or someone you care about?</h1>
-                <div class="purpleLine"></div>
-                <p>I am Joanna Oates, a fully qualified Nutritional therapist & Psychotherapist, specialising in Eating
-                    Disorders. I can support you or those you care about with recovery from eating disorders and
-                    disordered eating. I also offer support for bariatric surgery.</p>
-                <div class="purpleLine"></div>
-        </div>
         <div class="JoImage">
             <img class="homeImage" src="media/JoImageHome.jpg" alt="Image of Joanna Oates">
         </div>
+        <div class="info defaultMargin">
+            <h2>Would you like to escape from constant thoughts about food, weight and body shape?</h2>
+            <div class="purpleLine"></div>
+            <h3>Are you worried about yourself or someone you care about?</h3>
+            <div class="purpleLine"></div>
+            <p>I am Joanna Oates, a fully qualified Nutritional therapist & Psychotherapist, specialising in Eating
+                Disorders. I can support you or those you care about with recovery from eating disorders and
+                disordered eating. I also offer support for bariatric surgery.</p>
+            <div class="purpleLine"></div>
+        </div>
     </div>
 
-    <footer class="dropShadow">
+    <div class="navSpacer"></div>
+
+    <footer>
         <p><a href="mailto:hello@joannaoates.com">Book a discovery call</a></p>
     </footer>
 

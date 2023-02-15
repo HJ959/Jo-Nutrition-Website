@@ -22,6 +22,11 @@ body {
     height: 100%;
 }
 
+#loadOverlay {
+    overflow: hidden;
+    display: none;
+}
+
 body {
     background-color: var(--white);
     overflow-x: hidden;
@@ -105,11 +110,6 @@ a {
     font-weight: bold;
 }
 
-.navSpacer {
-    width: 100%;
-    height: 5vmin;
-}
-
 ul {
     list-style: none;
 }
@@ -132,16 +132,16 @@ ul li::before {
     display: block;
 }
 
-/* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
+/* ========== MOBILE ======= */
 @media screen and (max-width: 600px) {
     .topnav a {
         float: none;
-        display: none;
+        display: block;
         text-align: left;
     }
 
     .navSpacer {
-        height: 15vh;
+        height: 12vh;
     }
 
     .defaultMargin {
@@ -149,6 +149,7 @@ ul li::before {
         margin-right: 7%;
         margin-top: 1%;
     }
+
     .material-symbols-outlined {
         font-variation-settings:
             'FILL'0,
@@ -173,7 +174,7 @@ ul li::before {
     }
 }
 
-/* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
+/* ========== TABLET ======= */
 @media screen and (min-width: 601px) and (max-width: 1200px) {
     .topnav a {
         float: none;
@@ -182,7 +183,7 @@ ul li::before {
     }
 
     .navSpacer {
-        height: 15vh;
+        height: 10vh;
     }
 
     .defaultMargin {
@@ -196,8 +197,13 @@ ul li::before {
     }
 }
 
-/* Add media queries for responsiveness - when the screen is 600px wide or less, stack the links on top of each other */
+/* ========== DESKTOP ======= */
 @media screen and (min-width: 1201px) {
+    .navSpacer {
+        width: 100%;
+        height: 10vmin;
+    }
+
     .defaultMargin {
         margin-left: 25%;
         margin-right: 25%;
