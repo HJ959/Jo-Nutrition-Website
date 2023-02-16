@@ -15,7 +15,7 @@
 
 .info {
     grid-area: info;
-    width: 70%;
+    width: 100%;
 }
 
 input[type=text],
@@ -36,6 +36,19 @@ form {
     height: 200px;
 }
 
-.captcha {
-    width: 60%;
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 1000px) {
+    .formMargin {
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 1%;
+    }
+}
+
+@media screen and (min-width: 1001px) {
+    .formMargin {
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 1%;
+    }
 }
