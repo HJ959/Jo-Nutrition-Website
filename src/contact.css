@@ -15,4 +15,23 @@
 
 .info {
     grid-area: info;
+    width: 70%;
+}
+
+input[type=text],
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: block;
+}
+
+form {
+    padding: 5%;
+    background-color: var(--green-fade);
+}
+
+.messageContact {
+    height: 200px;
 }

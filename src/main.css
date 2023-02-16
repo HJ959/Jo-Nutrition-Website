@@ -46,8 +46,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    backdrop-filter: blur(10px);
-    border-radius: 64px;
+    backdrop-filter: blur(15px);
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -79,8 +78,8 @@ body {
 
 /* Generic minimal line */
 .slimBorder {
-    border: 1px solid var(--purple);
-    border-style: none none solid solid;
+    border: 2px solid var(--purple);
+    border-style: solid solid solid solid;
 }
 
 /* Purple line spacer to use inbetween text blocks */
@@ -93,6 +92,10 @@ body {
     margin-bottom: 2%;
 }
 
+.hidden {
+    display: none;
+}
+
 /* add a footer */
 footer {
     position: fixed;
@@ -102,7 +105,7 @@ footer {
     background-color: var(--green-fade);
     color: var(--white);
     text-align: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
 a {
@@ -132,11 +135,15 @@ ul li::before {
     display: block;
 }
 
+.center {
+    text-align: center;
+}
+
 /* ========== MOBILE ======= */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
     .topnav a {
         float: none;
-        display: block;
+        display: none;
         text-align: left;
     }
 
@@ -175,7 +182,7 @@ ul li::before {
 }
 
 /* ========== TABLET ======= */
-@media screen and (min-width: 601px) and (max-width: 1200px) {
+@media screen and (min-width: 781px) and (max-width: 1200px) {
     .topnav a {
         float: none;
         display: block;

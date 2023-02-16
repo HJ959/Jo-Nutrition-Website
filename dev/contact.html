@@ -36,28 +36,44 @@
 
     <div class="container">
         <div class="info defaultMargin">
-            <form name="contact" method="POST" data-netlify="true">
-                <p>
-                  <label>Your Name: <input type="text" name="name" /></label>
-                </p>
-                <p>
-                  <label>Your Email: <input type="email" name="email" /></label>
-                </p>
-                <p>
-                  <label>Your Role: <select name="role[]" multiple>
-                    <option value="leader">Leader</option>
-                    <option value="follower">Follower</option>
-                  </select></label>
-                </p>
-                <p>
-                  <label>Message: <textarea name="message"></textarea></label>
-                </p>
-                <p>
-                  <button type="submit">Send</button>
-                </p>
-              </form>
+            <form class="dropShadow slimBorder" name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+                <input type="hidden" name="subject" value="Inquiry from joannaoates.com"/><p>
+                    <p class="hidden">
+                        <label>
+                            Additional: <input name="bot-field"/>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            Email: 
+                        </label>
+                        <input type="text" name="email"/>
+                    </p>
+                    <p>
+                        <label>
+                            Message: 
+                        </label>
+                        <textarea class="messageContact" name="message"></textarea>
+                    </p>
+                    <div data-netlify-recaptcha="true"></div>
+                    <p>
+                        <button type="submit">Send</button>
+                    </p>
+            </form>
+            <h4 class="center">My email: hello@joannaoates.com</h4>
+            <div class="purpleLine"></div>
+            <h4 class="center">My mobile: 
+                +447812087347</h4>
+            <div class="purpleLine"></div>
         </div>
-    </div>   
+    </div>
+
+    <div class="navSpacer"></div>
+
+    <footer>
+        <p><a href="mailto:hello@joannaoates.com">Book a discovery call</a></p>
+    </footer>
 </body>
+
 
 </html>

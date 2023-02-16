@@ -1,12 +1,12 @@
 const navbarItems = document.getElementsByClassName("collapsable")
 export function navMenuMover() {
-  if (navbarItems[0].style.display === "none") {
+  if (navbarItems[0].style.display === "block") {
     for (var i = 0; i < navbarItems.length; i++) {
-      navbarItems[i].style.display = "block"
+      navbarItems[i].style.display = "none"
     }
   } else {
     for (var i = 0; i < navbarItems.length; i++) {
-      navbarItems[i].style.display = "none"
+      navbarItems[i].style.display = "block"
     }
   }
 }
