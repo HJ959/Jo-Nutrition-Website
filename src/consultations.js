@@ -6,3 +6,9 @@ import './main.css'
 import './consultations.css'
 // import some useful UX scripts
 import './scripts'
+
+const arrows = document.getElementById("arrow")
+function arrowHider(event) {
+    arrows.style.display = "none"    
+}
+document.addEventListener("scroll", arrowHider)
