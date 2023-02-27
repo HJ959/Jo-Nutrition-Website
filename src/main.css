@@ -46,7 +46,8 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    backdrop-filter: blur(25px);
+    /* backdrop-filter: blur(25px); */
+    background: var(--white);
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -102,10 +103,10 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: var(--green-fade);
+    background-color: var(--grey);
     color: var(--white);
     text-align: center;
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */
 }
 
 a {
@@ -133,6 +134,10 @@ ul li::before {
 
 .collapsable {
     display: block;
+}
+
+.arrow {
+    pointer-events: none;
 }
 
 
