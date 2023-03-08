@@ -5,7 +5,7 @@ export function navMenuMover() {
   if (navbarItems[0].style.display === "block") {
     for (var i = 0; i < navbarItems.length; i++) {
       navbarItems[i].style.display = "none"
-      firstNavbarSpacer.style.height = "12vh"
+      firstNavbarSpacer.style.height = "10vh"
     }
   } else {
     for (var i = 0; i < navbarItems.length; i++) {

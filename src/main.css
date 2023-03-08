@@ -163,7 +163,7 @@ color: var(--navy);
     }
 
     .navSpacer {
-        height: 15vh;
+        height: 10vh;
     }
 
     .defaultMargin {
@@ -231,7 +231,7 @@ color: var(--navy);
 @media screen and (min-width: 1201px) {
     .navSpacer {
         width: 100%;
-        height: 10vmin;
+        height: 10vh;
     }
 
     .defaultMargin {
