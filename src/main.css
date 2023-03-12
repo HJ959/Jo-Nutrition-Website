@@ -78,8 +78,7 @@ body {
 /* Change the color of links on hover */
 .topnav a:hover {
     color: var(--navy);
-    /* translate: 0px 2px; */
-    font-size: 1.1em;
+    translate: 0px 2px;
     transition: 0.2s;
 }
 
