@@ -129,6 +129,7 @@ a {
 
 ul {
     list-style: none;
+    padding-inline-start: 10px;
 }
 
 ul li::before {
