@@ -12,3 +12,4 @@ function arrowHider(event) {
     arrows.style.display = "none"    
 }
 document.addEventListener("scroll", arrowHider)
+
