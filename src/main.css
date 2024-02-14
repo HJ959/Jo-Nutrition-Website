@@ -257,3 +257,11 @@ color: var(--navy);
     }
     
 }
+
+.imageVenue {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    object-position: center;
+    
+}
