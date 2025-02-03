@@ -1,26 +1,28 @@
 const navbarItems = document.getElementsByClassName("collapsable")
-const firstNavbarSpacer = document.getElementsByClassName("navSpacer")[0]
 
 export function navMenuMover() {
+  if (!navbarItems.length) {
+    console.error("Navbar items or first nav spacer not found");
+    return;
+  }
+
   if (navbarItems[0].style.display === "block") {
     for (var i = 0; i < navbarItems.length; i++) {
       navbarItems[i].style.display = "none"
-      firstNavbarSpacer.style.height = "10vh"
     }
   } else {
     for (var i = 0; i < navbarItems.length; i++) {
       navbarItems[i].style.display = "block"
-      firstNavbarSpacer.style.height = "25vh"
     }
   }
 }
-window.navMenuMover = navMenuMover
-document.getElementById("burger").addEventListener("click", navMenuMover)
-
-window.addEventListener("resize", bigWindowMenuShower)
 
 export function bigWindowMenuShower(event) {
-  if (window.innerWidth > 600) {
+  if (!navbarItems.length) {
+    console.error("Navbar items not found");
+    return;
+  }
+  if (window.innerWidth > 900) {
     for (var i = 0; i < navbarItems.length; i++) {
       navbarItems[i].style.display = "block"
     }

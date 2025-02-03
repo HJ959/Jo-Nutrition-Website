@@ -31,9 +31,8 @@ body {
     background-color: var(--white);
     overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;
-    font-size: 17px;
-    font-size: 2vh;
-    line-height: 2;
+    font-size: 1.2em;
+    line-height: 1.5;
 }
 
 .dropShadow {
@@ -43,13 +42,16 @@ body {
 
 .consultLists {
     color: var(--navy);
-    font-size: 1.4em;
 }
 
+.center {
+    text-align: center;
+}
 
 /* Add a black background color to the top navigation */
 .topnav {
     position: fixed;
+    z-index: 5;
     left: 0;
     top: 0;
     /* backdrop-filter: blur(25px); */
@@ -70,16 +72,15 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 1em;
     margin-left: 2%;
-    transition: 0.4s;
+    /* transition: 0.1s; */
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
     color: var(--navy);
-    translate: 0px 2px;
-    transition: 0.2s;
+    translate: 0px 1px;
+    transition: 0.1s;
 }
 
 /* Add a color to the active/current link */
@@ -98,10 +99,8 @@ body {
     border: 1px solid var(--purple-fade);
     border-style: solid;
     width: 100%;
-    /* filter: drop-shadow(1px 1px 1px var(--green)); */
-    border-radius: 32px;
+    opacity: 50%;
     margin-bottom: 2%;
-    
 }
 
 .hidden {
@@ -111,6 +110,7 @@ body {
 /* add a footer */
 footer {
     position: fixed;
+    z-index: 5;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -138,7 +138,7 @@ ul li::before {
     color: var(--green);
     display: inline-block;
     font-weight: bolder;
-    font-size: 2vh;
+    font-size: 1.2em;
     /* Needed to add space between the bullet and the text */
     width: 1em;
     /* Also needed for space (tweak if needed) */
@@ -160,11 +160,15 @@ color: var(--navy);
 }
 
 .navSpacer {
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 /* ========== MOBILE ======= */
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 900px) {
+    body {
+        padding-top: 15vmin;
+    }
+
     .topnav a {
         float: none;
         display: none;
@@ -172,7 +176,7 @@ color: var(--navy);
     }
 
     .navSpacer {
-        height: 10vh;
+        height: 6vh;
     }
 
     .defaultMargin {
@@ -195,22 +199,21 @@ color: var(--navy);
         text-decoration: none;
         margin-left: 2%;
         display: block;
-        font-size: 2em;
     }
 
     .material-symbols-outlined:hover {
         color: var(--navy);
         translate: 0px 2px;
         transition: 0.1s;
-    }
-    .center {
-        text-align: center;
-    }
-    
+    }  
 }
 
 /* ========== TABLET ======= */
-@media screen and (min-width: 761px) and (max-width: 1200px) {
+@media screen and (min-width: 901px) and (max-width: 1367px) {
+    body {
+        padding-top: 15vmin;
+    }
+
     .topnav a {
         float: none;
         display: block;
@@ -218,7 +221,7 @@ color: var(--navy);
     }
 
     .navSpacer {
-        height: 15vh;
+        height: 6vh;
     }
 
     .defaultMargin {
@@ -228,19 +231,37 @@ color: var(--navy);
     }
 
     .material-symbols-outlined {
-        display: none;
-    }
-    .center {
+        font-variation-settings:
+            'FILL'0,
+            'wght'700,
+            'GRAD'200,
+            'opsz'48;
+        /* display: none; */
+        float: left;
+        color: var(--black);
         text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        margin-left: 2%;
+        display: block;
     }
-    
+
+    .material-symbols-outlined:hover {
+        color: var(--navy);
+        translate: 0px 2px;
+        transition: 0.1s;
+    }  
 }
 
 /* ========== DESKTOP ======= */
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1368px) {
+    body {
+        padding-top: 10vmin;
+    }
+
     .navSpacer {
         width: 100%;
-        height: 10vh;
+        height: 6vh;
     }
 
     .defaultMargin {
@@ -251,9 +272,6 @@ color: var(--navy);
 
     .material-symbols-outlined {
         display: none;
-    }
-    .center {
-        text-align: center;
     }
     
 }

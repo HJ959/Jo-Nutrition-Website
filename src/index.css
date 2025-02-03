@@ -1,5 +1,5 @@
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
     .container {
         display: grid;
         grid-template-columns: 1fr;
@@ -22,13 +22,13 @@
         grid-area: JoImage;
         display: flex;
         justify-content: center;
-        padding: 2%;
+        padding: 1%;
     }
 
     .homeImage {
-        width: 70vw;
-        height: 70vw;
-        border-radius: 360px;
+        width: 80vmin;
+        height: 80vmin;
+        border-radius: 10px;
     }
     .homeMargin {
         margin-left: 5%;
@@ -37,7 +37,7 @@
     }
 }
 
-@media screen and (min-width: 1001px) {
+@media screen and (min-width: 1051px) {
     .container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -66,9 +66,9 @@
     }
 
     .homeImage {
-        width: 40vmax;
-        height: 40vmax;
-        border-radius: 360px;
+        width: 70vmin;
+        height: 70vmin;
+        border-radius: 36px;
     }
 
     .homeMargin {

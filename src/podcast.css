@@ -1,0 +1,33 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-areas:
+        "podcasts";
+}
+
+.podcasts {
+    grid-area: podcasts;
+    text-align: center;
+}
+
+p {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.spotifyPodcast {
+    height: 30vh;
+    min-height: 200px;
+    max-height: 600px;
+
+    width: 90vw;
+    min-width: 300px;
+    max-width: 1200px;
+}

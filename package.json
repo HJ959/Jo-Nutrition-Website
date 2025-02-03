@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -R dist/* && rm -R dev/* && mkdirp -p dist/media && mkdirp -p dev/media",
     "env": "env",
-    "start": "webpack serve --open --host 0.0.0.0 --config webpack.dev.config.js",
+    "start": "npm run build-dev && webpack serve --config webpack.dev.config.js",
     "build-prod": "mkdirp -p dist/media && cp -r src/media/* dist/media && cp -r src/favicon_io/* dist/ && cp -r src/robots.txt dist/ && cp -r src/sitemap.xml dist/ && webpack --config webpack.prod.config.js",
     "build-dev": "mkdirp -p dev/media && cp -r src/media/* dev/media && cp -r src/favicon_io/* dev/ && webpack --config webpack.dev.config.js",
     "build-all": "npm run clean && npm run build-prod && npm run build-dev"
@@ -23,6 +23,6 @@
     "style-loader": "^3.3.4",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.1"
+    "webpack-dev-server": "^5.2.0"
   }
 }

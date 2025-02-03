@@ -11,7 +11,8 @@ module.exports = {
     consultations: "./src/consultations.js",
     qualifications: "./src/qualifications.js",
     contact: "./src/contact.js",
-    nutritionalTherapy: "./src/nutritional-therapy.js"
+    nutritionalTherapy: "./src/nutritional-therapy.js",
+    podcast: "./src/podcast.js"
   },
 
   output: {
@@ -61,6 +62,12 @@ module.exports = {
       inject: true,
       chunks: ['nutritionalTherapy'],
       filename: 'nutritional-therapy.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/podcast.html',
+      inject: true,
+      chunks: ['podcast'],
+      filename: 'podcast.html'
     })
   ],
   module: {

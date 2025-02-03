@@ -2,33 +2,36 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  watch: true,
-  target: 'web',
   entry: {
-    index: path.resolve(__dirname, "src", "index.js"),
-    about: path.resolve(__dirname, "src", "about.js"),
-    eatingDisorders: path.resolve(__dirname, "src", "eating-disorders.js"),
-    consultations: path.resolve(__dirname, "src", "consultations.js"),
-    qualifications: path.resolve(__dirname, "src", "qualifications.js"),
-    contact: path.resolve(__dirname, "src", "contact.js"),
-    nutritionalTherapy: path.resolve(__dirname, "src", "nutritional-therapy.js")
+    index: "./src/index.js",
+    about: "./src/about.js",
+    eatingDisorders: "./src/eating-disorders.js",
+    consultations: "./src/consultations.js",
+    qualifications: "./src/qualifications.js",
+    contact: "./src/contact.js",
+    nutritionalTherapy: "./src/nutritional-therapy.js",
+    podcast: "./src/podcast.js"
   },
-
   output: {
-    filename: "[name].js",
     path: path.resolve(__dirname, "dev"),
+    filename: "[name].bundle.js",
   },
+  mode: 'development',
+  target: 'web',
 
   devServer: {
     static: path.resolve(__dirname, 'dev'),
-    watchFiles: {
-      paths: ['src/**/*.*'], // <= watching files
-      options: {
-        usePolling: true,
-      },
-    },
+    hot: true,
+    host: '0.0.0.0',
+    port: 8080,
+    open: true,
+    watchFiles: ['src/**/*.html'],
   },
+  
+  watchOptions: {
+    poll: 1000, // Check for changes every second
+    ignored: /node_modules/,
+  },  
 
   plugins: [
     new HtmlWebpackPlugin({
@@ -72,6 +75,12 @@ module.exports = {
       inject: true,
       chunks: ['nutritionalTherapy'],
       filename: 'nutritional-therapy.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/podcast.html',
+      inject: true,
+      chunks: ['podcast'],
+      filename: 'podcast.html'
     })
   ],
   module: {
