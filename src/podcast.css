@@ -15,6 +15,7 @@
 .podcasts {
     grid-area: podcasts;
     text-align: center;
+    padding-bottom: 40px;
 }
 
 p {
@@ -31,3 +32,4 @@ p {
     min-width: 300px;
     max-width: 1200px;
 }
+

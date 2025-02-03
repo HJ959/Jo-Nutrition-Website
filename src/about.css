@@ -22,7 +22,6 @@
     border-radius: 16px;
     width: 50vmax;
     height: 50vmax;
-    border-radius: 6px;
 }
 
 .AboutP1 {
@@ -69,5 +68,47 @@
     100% {
         opacity: 0;
         transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
+/* ========== MOBILE (max-width: 767px) ======= */
+@media screen and (max-width: 767px) {
+    body {
+        padding-top: 15vmin;
+        padding-bottom: 15vmin;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "aboutJoImage"
+            "AboutP1";
+        gap: 10px;
+        width: 100%;
+    }
+
+    .aboutJoImage {
+        grid-area: aboutJoImage;
+        display: flex;
+        justify-content: center;
+    }
+
+    .joImageAbout {
+        width: 80vw;
+        height: auto;
+        border-radius: 16px;
+    }
+
+    .AboutP1 {
+        grid-area: AboutP1;
+        padding: 20px;
+        font-size: 1em;
+    }
+
+    .defaultMargin {
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }

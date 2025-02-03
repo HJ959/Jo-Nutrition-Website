@@ -26,3 +26,9 @@ function arrowHider(event) {
     arrows.style.display = "none"    
 }
 document.addEventListener("scroll", arrowHider)
+
+let timer;
+document.addEventListener("scroll", function() {
+    clearTimeout(timer);
+    timer = setTimeout(arrowHider, 150);
+});
