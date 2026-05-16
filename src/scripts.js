@@ -1,32 +1,27 @@
-const navbarItems = document.getElementsByClassName("collapsable")
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("loadOverlay");
+  if (overlay) overlay.classList.add("hidden");
+});
+
+const navbarItems = document.getElementsByClassName("collapsable");
 
 export function navMenuMover() {
-  if (!navbarItems.length) {
-    console.error("Navbar items or first nav spacer not found");
-    return;
-  }
+  if (!navbarItems.length) return;
 
-  if (navbarItems[0].style.display === "block") {
-    for (var i = 0; i < navbarItems.length; i++) {
-      navbarItems[i].style.display = "none"
-    }
-  } else {
-    for (var i = 0; i < navbarItems.length; i++) {
-      navbarItems[i].style.display = "block"
-    }
+  const isOpen = navbarItems[0].style.display === "block";
+  for (const item of navbarItems) {
+    item.style.display = isOpen ? "none" : "block";
   }
 }
 
-export function bigWindowMenuShower(event) {
-  if (!navbarItems.length) {
-    console.error("Navbar items not found");
-    return;
-  }
-  if (window.innerWidth > 900) {
-    for (var i = 0; i < navbarItems.length; i++) {
-      navbarItems[i].style.display = "block"
+let _resizeTimer;
+export function bigWindowMenuShower() {
+  clearTimeout(_resizeTimer);
+  _resizeTimer = setTimeout(() => {
+    if (window.innerWidth > 900) {
+      for (const item of navbarItems) {
+        item.style.display = "block";
+      }
     }
-  }
+  }, 100);
 }
-
-console.log("Welcome curious developer and web aficionado. This website was created by Henry James. https://henryjames.space")

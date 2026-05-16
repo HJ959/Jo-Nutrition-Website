@@ -18,18 +18,18 @@
     padding-bottom: 40px;
 }
 
-p {
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-
 .spotifyPodcast {
+    display: block;
+    margin: 0 auto;
     height: 30vh;
     min-height: 200px;
     max-height: 600px;
-
     width: 90vw;
     min-width: 300px;
     max-width: 1200px;
+}
+
+.podcasts p {
+    margin-top: 0.5em;
 }
 

@@ -5,8 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Contact</title>
-    <meta name="description" content="">
+    <title>Contact Joanna Oates | Book a Discovery Call</title>
+    <meta name="description" content="Get in touch with Joanna Oates to book a free discovery call or send a message. Specialist support for eating disorders, nutritional therapy and bariatric surgery.">
+    <link rel="canonical" href="https://joannaoates.com/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://joannaoates.com/contact.html">
+    <meta property="og:title" content="Contact Joanna Oates | Book a Discovery Call">
+    <meta property="og:description" content="Get in touch with Joanna Oates to book a free discovery call or send a message. Specialist support for eating disorders, nutritional therapy and bariatric surgery.">
+    <meta property="og:image" content="https://joannaoates.com/media/JoImageHome.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Open+Sans&display=swap"
@@ -15,7 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="application/ld+json">
         {
-            "@context": "http://schema.org/",
+            "@context": "https://schema.org/",
             "@type": "Person",
             "name": "Joanna Oates",
             "jobTitle": "Psychotherapist and Nutritional Therapist",
@@ -26,14 +32,12 @@
 </head>
 
 <body>
-    <div id="loadOverlay"
-        style="background-color:rgb(255, 255, 255); position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
-    </div>
+    <div id="loadOverlay" style="position:fixed;inset:0;background:#fff;z-index:9999"></div>
 
     <nav class="topnav">
-        <span id="burger" class="material-symbols-outlined">
+        <button id="burger" class="material-symbols-outlined" aria-label="Toggle navigation menu">
             menu
-        </span>
+        </button>
         <a class="collapsable" href="/index.html">Home</a>
         <a class="collapsable" href="/about.html">About</a>
         <a class="collapsable" href="/eating-disorders.html">Eating Disorders</a>
@@ -41,7 +45,7 @@
         <a class="collapsable" href="/consultations.html">Consultations</a>
         <a class="collapsable" href="/qualifications.html">Qualifications</a>
         <a class="collapsable" href="/podcast.html">Podcasts</a>
-        <a class="active collapsable" href="/contact.html">Contact</a>
+        <a class="active collapsable" href="/contact.html" aria-current="page">Contact</a>
     </nav>
 
     <div class="container formMargin">
@@ -54,23 +58,18 @@
             <form class="dropShadow slimBorder" name="contact" method="POST" netlify-honeypot="bot-field"
                 data-netlify="true">
                 <input type="hidden" name="subject" value="Inquiry from joannaoates.com" />
-                <p>
                 <p class="hidden">
                     <label>
                         Additional: <input name="bot-field" />
                     </label>
                 </p>
                 <p>
-                    <label>
-                        Email:
-                    </label>
-                    <input type="text" name="email" />
+                    <label for="contact-email">Email:</label>
+                    <input type="email" id="contact-email" name="email" required />
                 </p>
                 <p>
-                    <label>
-                        Message:
-                    </label>
-                    <textarea class="messageContact" name="message"></textarea>
+                    <label for="contact-message">Message:</label>
+                    <textarea class="messageContact" id="contact-message" name="message"></textarea>
                 </p>
                 <div class="captcha" data-netlify-recaptcha="true"></div>
                 <p>
@@ -80,5 +79,10 @@
             <div class="purpleLine"></div>
         </div>
     </div>
+
+    <footer>
+        <p><a href="/contact.html">Book a discovery call</a></p>
+    </footer>
+
 </body>
 </html>

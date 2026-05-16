@@ -19,12 +19,27 @@
 html,
 body {
     width: 100%;
-    max-height: 100vh;
 }
 
 #loadOverlay {
-    overflow: hidden;
-    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 9999;
+    transition: opacity 0.2s ease;
+}
+
+#loadOverlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#therapyhubLink {
+    display: inline-block;
+    background: #eceaf1;
+    padding: 10px;
+    max-width: 290px;
+    margin: 15px 0;
 }
 
 body {
@@ -55,8 +70,9 @@ body {
     z-index: 5;
     left: 0;
     top: 0;
-    /* backdrop-filter: blur(25px); */
-    background: var(--white);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    background: rgba(250, 250, 250, 0.85);
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -87,6 +103,7 @@ body {
 /* Add a color to the active/current link */
 .topnav a.active {
     color: var(--navy);
+    border-bottom: 2px solid var(--navy);
 }
 
 /* Generic minimal line */
@@ -97,10 +114,10 @@ body {
 
 /* Purple line spacer to use inbetween text blocks */
 .purpleLine {
-    border: 1px solid var(--purple-fade);
+    border: 1px solid var(--purple);
     border-style: solid;
     width: 100%;
-    opacity: 50%;
+    opacity: 40%;
     margin-bottom: 2%;
 }
 
@@ -115,7 +132,9 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: var(--white);
+    background-color: rgba(250, 250, 250, 0.85);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     color: var(--white);
     text-align: center;
     border: 1px solid var(--purple-fade);
@@ -123,9 +142,31 @@ footer {
     box-shadow: 0px 0px 12px 0px var(--purple-fade);
 }
 
+footer a {
+    display: inline-block;
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+footer a:hover {
+    background-color: var(--purple);
+    color: var(--black);
+}
+
 a {
     color: var(--black);
     font-weight: bold;
+}
+
+p {
+    max-width: 70ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ul {
@@ -170,7 +211,7 @@ h3 {
 @media screen and (max-width: 900px) {
     body {
         padding-top: 15vmin;
-        padding-bottom: 15vmin;
+        padding-bottom: 20vmin;
     }
 
     .topnav a {
@@ -189,13 +230,12 @@ h3 {
         margin-top: 1%;
     }
 
-    .material-symbols-outlined {
+    #burger.material-symbols-outlined {
         font-variation-settings:
             'FILL' 0,
             'wght' 700,
             'GRAD' 200,
             'opsz' 48;
-        /* display: none; */
         float: left;
         color: var(--black);
         text-align: center;
@@ -203,9 +243,14 @@ h3 {
         text-decoration: none;
         margin-left: 2%;
         display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Material Symbols Outlined';
+        font-size: 24px;
     }
 
-    .material-symbols-outlined:hover {
+    #burger.material-symbols-outlined:hover {
         color: var(--navy);
         translate: 0px 2px;
         transition: 0.1s;
@@ -235,13 +280,12 @@ h3 {
         margin-top: 1%;
     }
 
-    .material-symbols-outlined {
+    #burger.material-symbols-outlined {
         font-variation-settings:
             'FILL' 0,
             'wght' 700,
             'GRAD' 200,
             'opsz' 48;
-        /* display: none; */
         float: left;
         color: var(--black);
         text-align: center;
@@ -249,9 +293,14 @@ h3 {
         text-decoration: none;
         margin-left: 2%;
         display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Material Symbols Outlined';
+        font-size: 24px;
     }
 
-    .material-symbols-outlined:hover {
+    #burger.material-symbols-outlined:hover {
         color: var(--navy);
         translate: 0px 2px;
         transition: 0.1s;
@@ -276,7 +325,7 @@ h3 {
         margin-top: 1%;
     }
 
-    .material-symbols-outlined {
+    #burger.material-symbols-outlined {
         display: none;
     }
 

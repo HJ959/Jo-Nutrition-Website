@@ -59,3 +59,34 @@
         transform: rotate(45deg) translate(20px, 20px);
     }
 }
+
+.venueSlideshow {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.venueSlide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: venueFade 12s infinite;
+}
+
+.venueSlide:nth-child(1) { animation-delay: 0s; }
+.venueSlide:nth-child(2) { animation-delay: 4s; }
+.venueSlide:nth-child(3) { animation-delay: 8s; }
+
+@keyframes venueFade {
+    0%      { opacity: 0; }
+    4.2%    { opacity: 1; }
+    33.3%   { opacity: 1; }
+    41.7%   { opacity: 0; }
+    100%    { opacity: 0; }
+}

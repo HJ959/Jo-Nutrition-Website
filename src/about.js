@@ -21,14 +21,11 @@ if (module.hot) {
     module.hot.accept();
 }
 
-const arrows = document.getElementById("arrow")
-function arrowHider(event) {
-    arrows.style.display = "none"    
-}
-document.addEventListener("scroll", arrowHider)
-
-let timer;
-document.addEventListener("scroll", function() {
-    clearTimeout(timer);
-    timer = setTimeout(arrowHider, 150);
+const arrows = document.getElementById("arrow");
+let _scrollTimer;
+document.addEventListener("scroll", function () {
+  clearTimeout(_scrollTimer);
+  _scrollTimer = setTimeout(() => {
+    if (arrows) arrows.style.display = "none";
+  }, 150);
 });
