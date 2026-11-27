@@ -44,7 +44,16 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              // /fonts/ files are copied by the build scripts, not bundled.
+              url: { filter: (url) => !url.startsWith("/fonts/") },
+            },
+          },
+        ],
       },
       {
         test: /\.(js)$/,
@@ -52,7 +61,7 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource',
       },
     ],

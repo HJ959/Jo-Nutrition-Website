@@ -23,8 +23,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Open+Sans&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="/fonts/open-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="application/ld+json">
@@ -58,7 +57,11 @@
 
     <div class="container">
         <div class="JoImage">
-            <img class="homeImage dropShadow" src="media/JoImageHome.jpg" alt="Image of Joanna Oates">
+            <img class="homeImage dropShadow" src="media/JoImageHome-800.webp"
+                srcset="media/JoImageHome-800.webp 800w, media/JoImageHome-1200.webp 1200w"
+                sizes="(max-width: 1050px) 75vmin, 70vmin"
+                width="1200" height="1200" fetchpriority="high"
+                alt="Image of Joanna Oates">
         </div>
         <div class="info homeMargin">
             <h1 class="center">Would you like to escape from constant thoughts about food, weight and body shape?</h1>

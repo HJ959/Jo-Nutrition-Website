@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const pages = require('./webpack.pages');
 
@@ -21,7 +22,7 @@ module.exports = {
     ...pages.map(p => new HtmlWebpackPlugin({
       template: `./src/${p.template}`,
       inject: true,
-      chunks: [p.chunk],
+      chunks: ['shared', p.chunk],
       filename: p.template,
       minify: {
         collapseWhitespace: true,
@@ -33,11 +34,36 @@ module.exports = {
     })),
   ],
 
+  optimization: {
+    // '...' keeps webpack's default JS minimizer.
+    minimizer: ['...', new CssMinimizerPlugin()],
+    splitChunks: {
+      cacheGroups: {
+        // normalize.css and main.css are imported by every page. Emit them once.
+        sharedStyles: {
+          name: 'shared',
+          test: /[\\/]src[\\/](normalize|main)\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    },
+  },
+
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              // /fonts/ files are copied by the build scripts, not bundled.
+              url: { filter: (url) => !url.startsWith('/fonts/') },
+            },
+          },
+        ],
       },
       {
         test: /\.js$/,
