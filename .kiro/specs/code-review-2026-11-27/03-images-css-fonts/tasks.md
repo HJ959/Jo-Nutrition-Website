@@ -38,9 +38,9 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 3.9 Run the R1.3 to R1.6 greps from `design.md`. Both builds pass and emit the `.webp` files.
   - [x] 3.10 Commit: `Serve responsive WebP images with explicit dimensions and lazy loading`.
 
-- [ ] 4. Confirm originals are not shipped [decision 3, revised]
-  - [ ] 4.1 After `npm run build-prod` and `npm run build-dev`, confirm `dist/media` and `dev/media` contain none of the 6 originals and every `media/` path in the HTML exists.
-    - `dist/media`: clean, all paths exist (checked). `dev/media`: all paths exist, but still holds the 6 originals from earlier builds (`build-dev` does not delete). Waiting for the user to approve deleting those 6 git-ignored files.
+- [x] 4. Confirm originals are not shipped [decision 3, revised]
+  - [x] 4.1 After `npm run build-prod` and `npm run build-dev`, confirm `dist/media` and `dev/media` contain none of the 6 originals and every `media/` path in the HTML exists.
+    - `dist/media`: clean, all paths exist (checked). `dev/media`: all paths exist, but still holds the 6 originals from earlier builds (`build-dev` does not delete). User approved; the 6 stale files were deleted from `dev/media`. Now clean.
   - [x] 4.2 The unused `NEDDE LOGO 2 with layers -inverted copy.webp` is still copied (25 KB). Left alone, not part of this phase.
 
 - [x] 5. Shared CSS chunk [R2.1 to R2.4]
@@ -76,7 +76,7 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 7.10 Run the R3.3, R3.4 and R3.6 greps from `design.md`.
   - [x] 7.11 Commit: `Self-host Open Sans, drop Lexend and the Google Fonts stylesheet`.
 
-- [ ] 8. Verify
+- [x] 8. Verify
   - [x] 8.1 `npm run build-prod` and `npm run build-dev` both pass.
   - [x] 8.2 `npm start`: `curl -sI` the font URL and one `-800.webp`. Expect 200.
     - Font, `JoImageHome-800.webp` and `/` all returned 200.
@@ -87,8 +87,9 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 8.5 Re-measure. Add the after tables and the before/after diff to `measurements.md` [R1.7, R2.5, R3.6].
     - Found: JS grows about 540 bytes gz per page from the split-chunk runtime. Details in `measurements.md`.
   - [x] 8.6 Update `.kiro/steering/project-summary.md`.
-  - [ ] 8.7 Ask before pushing the branch.
+  - [x] 8.7 Ask before pushing the branch. Approved and pushed.
 
 - [ ] 9. Check on a deploy preview (**needs the user**)
+  - User confirmed real bold looks better (decision 2 holds). Still to do: open the PR and look at the preview.
   - [ ] 9.1 `index` (hero, bold headings and nav), `qualifications` (logos), `consultations` (slideshow), `404` page. Report R2.6 and appearance as "not visually verified" until done.
   - [ ] 9.2 Lighthouse is not run here. Do not quote a score.
