@@ -6,11 +6,11 @@ Static, multi-page marketing site for Joanna Oates (nutritional therapist and ps
 - Node + npm (README says `nvm use node`, then `npm i`).
 - Webpack 5, `html-webpack-plugin`, `babel-loader` with `@babel/preset-env` (targets from `browserslist` in `package.json`).
 - Dev: `style-loader` injects CSS via JS. Prod: `mini-css-extract-plugin` emits hashed `.css` files.
-- `sharp` is in devDependencies but nothing in the repo uses it.
+- `sharp` (devDependency) is used by `scripts/optimise-images.js`, run with `npm run images`. `css-minimizer-webpack-plugin` minifies CSS in the prod build.
 - Node 26 locally (v26.5.0) and on Netlify (`NODE_VERSION = "26"` in `netlify.toml`). There is no `.nvmrc`.
 - Hosted on Netlify. Netlify builds on every push to `main`. `netlify.toml` sets `command = "npm run build-prod"` and `publish = "dist"`, and overrides the dashboard, which still shows "Build command: Not set". Pushes to other branches are not built: Deploy Previews need a pull request, and branch deploys are off.
 - The contact form uses Netlify Forms (`netlify-honeypot`). Netlify detects it in the built `dist/contact.html`. There is no `_redirects` file. `netlify.toml` has 8 forced 301 redirects from `/<page>.html` to the extensionless URL, and immutable cache headers for `/*.js` and `/*.css`. Netlify serves `dist/404.html` for unknown URLs.
-- Fonts and icons come from Google Fonts: Lexend, Open Sans, Material Symbols Outlined.
+- Open Sans is self-hosted (`src/fonts/open-sans-latin.woff2`, variable 400 to 700, OFL licence in `src/fonts/LICENSE.md`, preloaded on every page). Lexend was unused and is removed. Material Symbols Outlined still comes from Google Fonts (Phase 5).
 
 ## Commands
 | Command | What it does |
@@ -25,10 +25,12 @@ Static, multi-page marketing site for Joanna Oates (nutritional therapist and ps
 ```
 .
 ├── src/                    Source of truth
-│   ├── *.html              8 pages (templates for HtmlWebpackPlugin)
+│   ├── *.html              9 pages (8 plus 404.html, templates for HtmlWebpackPlugin)
 │   ├── *.js                One entry per page + shared scripts.js
 │   ├── *.css               normalize.css, main.css (global), one CSS file per page
-│   ├── media/              Photos, venue images, accreditation logos
+│   ├── media/              WebP photos and venue images, accreditation logos (committed outputs)
+│   ├── originals/          Source JPG/PNG for the 6 photos. Not built or served
+│   ├── fonts/              Open Sans WOFF2 + LICENSE.md
 │   ├── favicon_io/         Favicons, site.webmanifest
 │   ├── robots.txt
 │   └── sitemap.xml
@@ -79,7 +81,7 @@ The chunk name (camelCase) differs from the file name (kebab-case) for two pages
 - `robots.txt`: `User-agent: *`, `Allow: /` and `Sitemap: https://joannaoates.com/sitemap.xml`. Live since 2026-11-27. Before that, the build never shipped it.
 
 ## Build output
-- `dist/` (44 files): 8 minified HTML pages, `<chunk>.<hash>.js` (about 0.6 to 0.8 KB each), `<chunk>.<hash>.css` (about 14 to 15.6 KB each), `media/` (11 files), 6 favicons, `site.webmanifest`, `robots.txt`, `sitemap.xml`. Two consecutive builds give the same file list.
+- `dist/` (see `find dist -type f`): 9 minified HTML pages, `<chunk>.<hash>.js` (about 1.6 to 1.8 KB each, includes a chunk-loader runtime), one `shared.<hash>.css` (5.8 KB minified: normalize + main), `<chunk>.<hash>.css` per page (0.3 to 1.4 KB), `media/` (15 files), `fonts/` (2 files), 6 favicons, `site.webmanifest`, `robots.txt`, `sitemap.xml`. Two consecutive builds give the same file list.
 - `dev/`: unminified bundles (about 55 KB each).
 - `.gitignore` lists `node_modules`, `.DS_Store`, `dist/` and `dev/`. Build output was untracked on 2026-11-27 (`d1eef37`) and is still in git history.
 - Live checks (2026-11-27): all 8 pages, `/robots.txt`, `/sitemap.xml`, `/favicon.ico`, `/site.webmanifest` and `/media/` images return 200. `site.webmanifest` is served as `application/octet-stream`.
@@ -90,12 +92,12 @@ These were noticed while mapping. None have been changed.
 1. **Sitemap and canonical mismatch.** Fixed in Phase 2: all use extensionless URLs. Netlify's Pretty URLs setting may still interact with the redirect rules. Check on the deploy preview.
 2. ~~**`robots.txt` blocks `/media/`.**~~ Fixed 2026-11-27 (`5f0e64b`): it now allows everything and lists the sitemap.
 3. **Viewport `maximum-scale=1.0`** on `index.html` (check the other pages) stops pinch zoom, which fails WCAG 1.4.4.
-4. **Unoptimised images.** `JoImageNutrition.jpg` is 811 KB, `JoImageHome.jpg` 520 KB, `JoImageAbout.jpg` 472 KB, and the venue PNGs are 126 to 167 KB each. There is no `srcset`, WebP/AVIF, `width`/`height`, or `fetchpriority` on the hero. `index.html` is the page where the hero is the LCP element. `sharp` is installed but unused.
-5. **Render-blocking third-party CSS.** Two Google Fonts stylesheets load on every page, including the full Material Symbols font for a single menu icon.
+4. ~~**Unoptimised images.**~~ Fixed in Phase 3: portraits are 800 and 1200 px WebP with `srcset`, `sizes`, `width`/`height`; the hero has `fetchpriority="high"`; venue images and logos are lazy. Originals live in `src/originals/`. To change an image: edit the original, run `npm run images`, commit the WebP. Not visually verified.
+5. **Render-blocking third-party CSS.** Open Sans and Lexend are fixed in Phase 3. The Material Symbols stylesheet (full font for one menu icon) still loads on every page.
 6. **Load overlay hides content until `window.load`.** This delays visible content until all images are fetched, which hurts LCP. If JS fails, the overlay never hides. `index.html` also inlines the overlay style, duplicating `main.css`.
 7. **Duplicated per-page JS.** The burger and resize wiring is repeated in all 8 entries.
 8. **Webpack config duplication.** The dev config lists pages by hand, while the prod config uses a `pages` array. They can drift apart.
-9. **Dev build lacks `robots.txt` and `sitemap.xml`**, and the dev image rule omits `webp`.
+9. **Dev build lacks `robots.txt` and `sitemap.xml`**, (the dev image rule now includes `webp`).
 10. ~~**Committed build output.**~~ Fixed 2026-11-27 (Phase 0): `dist/` and `dev/` are git-ignored, and Netlify builds `dist/`.
 11. **No custom 404 page.**
 12. **Typos in copy and class names**: "Joanna oates" (lowercase "o") on `index.html`, `.affilatesLogo`.
@@ -107,3 +109,4 @@ These were noticed while mapping. None have been changed.
 - Adding a page means: new `src/<name>.{html,js,css}`, an entry in `webpack.pages.js` (shared by both configs), a redirect rule in `netlify.toml`, a nav link on every page, a `sitemap.xml` entry, and a build check.
 - After changes, run `npm run build-prod` and report asset sizes. Lighthouse and a browser are not available in this environment unless confirmed otherwise.
 - Ask before running `npm run clean`, `npm audit fix --force`, or anything that deletes files.
+- Two `css-loader` configs (dev and prod) skip `/fonts/` URLs (`url.filter`). Font files are copied by the build scripts, so keep any new font URL root-relative under `/fonts/`.

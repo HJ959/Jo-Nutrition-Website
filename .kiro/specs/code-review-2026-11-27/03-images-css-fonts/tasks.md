@@ -77,12 +77,16 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 7.11 Commit: `Self-host Open Sans, drop Lexend and the Google Fonts stylesheet`.
 
 - [ ] 8. Verify
-  - [ ] 8.1 `npm run build-prod` and `npm run build-dev` both pass.
-  - [ ] 8.2 `npm start`: `curl -sI` the font URL and one `-800.webp`. Expect 200.
-  - [ ] 8.3 Every `src` and `href` in `dist/*.html` exists in `dist/`.
-  - [ ] 8.4 Fresh clone: `npm ci && npm run build-prod` passes (new devDependency).
-  - [ ] 8.5 Re-measure. Add the after tables and the before/after diff to `measurements.md` [R1.7, R2.5, R3.6].
-  - [ ] 8.6 Update `.kiro/steering/project-summary.md`.
+  - [x] 8.1 `npm run build-prod` and `npm run build-dev` both pass.
+  - [x] 8.2 `npm start`: `curl -sI` the font URL and one `-800.webp`. Expect 200.
+    - Font, `JoImageHome-800.webp` and `/` all returned 200.
+  - [x] 8.3 Every `src` and `href` in `dist/*.html` exists in `dist/`.
+    - 171 references checked, 0 missing.
+  - [x] 8.4 Fresh clone: `npm ci && npm run build-prod` passes (new devDependency).
+    - Passed in a temp clone of the branch (38 files in `dist/`). `npm ci` warns that `sharp` install scripts are not in `allowScripts` (existing, not from this phase).
+  - [x] 8.5 Re-measure. Add the after tables and the before/after diff to `measurements.md` [R1.7, R2.5, R3.6].
+    - Found: JS grows about 540 bytes gz per page from the split-chunk runtime. Details in `measurements.md`.
+  - [x] 8.6 Update `.kiro/steering/project-summary.md`.
   - [ ] 8.7 Ask before pushing the branch.
 
 - [ ] 9. Check on a deploy preview (**needs the user**)
