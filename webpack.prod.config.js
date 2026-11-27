@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const pages = require('./webpack.pages');
 
@@ -34,6 +35,8 @@ module.exports = {
   ],
 
   optimization: {
+    // '...' keeps webpack's default JS minimizer.
+    minimizer: ['...', new CssMinimizerPlugin()],
     splitChunks: {
       cacheGroups: {
         // normalize.css and main.css are imported by every page. Emit them once.

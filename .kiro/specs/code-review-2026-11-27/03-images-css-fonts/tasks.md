@@ -52,11 +52,12 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 5.6 Edit one page CSS, rebuild, and confirm the shared hash is unchanged. Revert the edit.
   - [x] 5.7 Commit: `Split normalize.css and main.css into a shared CSS chunk`.
 
-- [ ] 6. CSS minification [decision 4]
-  - [ ] 6.1 `npm i -D css-minimizer-webpack-plugin`. Check it supports webpack 5 and Node 26. Review `git diff package-lock.json`.
-  - [ ] 6.2 Add `minimizer: ['...', new CssMinimizerPlugin()]` to the prod config only.
-  - [ ] 6.3 Build. Record sizes. Parse the minified and unminified CSS and diff the rule lists. Report any difference.
-  - [ ] 6.4 Commit: `Minify CSS in the production build`.
+- [x] 6. CSS minification [decision 4]
+  - [x] 6.1 `npm i -D css-minimizer-webpack-plugin`. Check it supports webpack 5 and Node 26. Review `git diff package-lock.json`.
+  - [x] 6.2 Add `minimizer: ['...', new CssMinimizerPlugin()]` to the prod config only.
+  - [x] 6.3 Build. Record sizes. Parse the minified and unminified CSS and diff the rule lists. Report any difference.
+    - Shared CSS 13,407 to 5,777 bytes (1,890 gz). Page CSS 335 to 1,428 bytes. Rule diff: no change in meaning. Only notation differs (hex/hsla colours, `0px` to `0`, `::before` to `:before`, `to` to `100%`, dropped quotes).
+  - [x] 6.4 Commit: `Minify CSS in the production build`.
 
 - [ ] 7. Self-hosted Open Sans [R3.2 to R3.8]
   - [ ] 7.1 Fetch the Google Fonts CSS (`Open+Sans:wght@400;700`) with a modern `User-Agent`. Download the WOFF2 file(s) from the `latin` block into `src/fonts/`. Record file names and sizes.
