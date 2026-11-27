@@ -21,7 +21,7 @@ module.exports = {
     ...pages.map(p => new HtmlWebpackPlugin({
       template: `./src/${p.template}`,
       inject: true,
-      chunks: [p.chunk],
+      chunks: ['shared', p.chunk],
       filename: p.template,
       minify: {
         collapseWhitespace: true,
@@ -32,6 +32,20 @@ module.exports = {
       },
     })),
   ],
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        // normalize.css and main.css are imported by every page. Emit them once.
+        sharedStyles: {
+          name: 'shared',
+          test: /[\\/]src[\\/](normalize|main)\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    },
+  },
 
   module: {
     rules: [

@@ -43,14 +43,14 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
     - `dist/media`: clean, all paths exist (checked). `dev/media`: all paths exist, but still holds the 6 originals from earlier builds (`build-dev` does not delete). Waiting for the user to approve deleting those 6 git-ignored files.
   - [x] 4.2 The unused `NEDDE LOGO 2 with layers -inverted copy.webp` is still copied (25 KB). Left alone, not part of this phase.
 
-- [ ] 5. Shared CSS chunk [R2.1 to R2.4]
-  - [ ] 5.1 Add `optimization.splitChunks.cacheGroups.sharedStyles` to `webpack.prod.config.js` (as in `design.md`).
-  - [ ] 5.2 Change each `HtmlWebpackPlugin` to `chunks: ['shared', p.chunk]`.
-  - [ ] 5.3 Build. Check for a `shared.<hash>.css`, no `shared.*.js` and no empty `<script>` in any page. Check the build log for "Conflicting order" warnings from mini-css-extract. Fix if present.
-  - [ ] 5.4 Equivalence check: for each of the 9 pages, `shared.css` + page CSS is byte-identical to the old `dist-before/<chunk>.css`.
-  - [ ] 5.5 `grep -ho 'shared\.[0-9a-f]*\.css' dist/*.html | sort | uniq -c` gives one name, 9 times.
-  - [ ] 5.6 Edit one page CSS, rebuild, and confirm the shared hash is unchanged. Revert the edit.
-  - [ ] 5.7 Commit: `Split normalize.css and main.css into a shared CSS chunk`.
+- [x] 5. Shared CSS chunk [R2.1 to R2.4]
+  - [x] 5.1 Add `optimization.splitChunks.cacheGroups.sharedStyles` to `webpack.prod.config.js` (as in `design.md`).
+  - [x] 5.2 Change each `HtmlWebpackPlugin` to `chunks: ['shared', p.chunk]`.
+  - [x] 5.3 Build. Check for a `shared.<hash>.css`, no `shared.*.js` and no empty `<script>` in any page. Check the build log for "Conflicting order" warnings from mini-css-extract. Fix if present.
+  - [x] 5.4 Equivalence check: for each of the 9 pages, `shared.css` + page CSS is byte-identical to the old `dist-before/<chunk>.css`.
+  - [x] 5.5 `grep -ho 'shared\.[0-9a-f]*\.css' dist/*.html | sort | uniq -c` gives one name, 9 times.
+  - [x] 5.6 Edit one page CSS, rebuild, and confirm the shared hash is unchanged. Revert the edit.
+  - [x] 5.7 Commit: `Split normalize.css and main.css into a shared CSS chunk`.
 
 - [ ] 6. CSS minification [decision 4]
   - [ ] 6.1 `npm i -D css-minimizer-webpack-plugin`. Check it supports webpack 5 and Node 26. Review `git diff package-lock.json`.
