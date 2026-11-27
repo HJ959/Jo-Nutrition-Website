@@ -2,7 +2,7 @@
 
 Written after the work was done, for tracking only. Implements `design.md`. Requirement references are in brackets. The work was done on branch `phase-2-seo-urls`, one commit per step.
 
-**Status: implemented and merged to `main`. Deploy-preview checks (redirects, 404 page, cache headers, contact form) were NOT run before the merge. They need to be checked on the live site.**
+**Status: complete. Merged to `main` (a434960) and live. Redirects, 404 page, cache headers and the contact form were checked on the live site on 2026-11-27. Only 3.8 (throwaway page test) was not run.**
 
 - [x] 1. Baseline
   - [x] 1.1 Create branch `phase-2-seo-urls` from `main`.
@@ -55,10 +55,10 @@ Written after the work was done, for tracking only. Implements `design.md`. Requ
   - [x] 8.4 Update `.kiro/steering/project-summary.md` and push the branch.
 
 - [ ] 9. Check on a deployed site (**needs the user**)
-  - [ ] 9.1 Each of the 8 `.html` URLs redirects once to the extensionless URL, with no loop and no `/about/` [R2.3].
-  - [ ] 9.2 `/does-not-exist` shows the custom 404 page with working styles and nav [R6.3].
-  - [ ] 9.3 A hashed `.js` or `.css` file has `cache-control: public, max-age=31536000, immutable`. `/about` has `max-age=0, must-revalidate` [R5.3].
-  - [ ] 9.4 A test message on `/contact` submits, and the Forms tab still lists `contact`.
-  - [ ] 9.5 If a redirect loops or ends in `/about/`, turn off Pretty URLs in the Netlify dashboard and redeploy.
+  - [x] 9.1 Each of the 8 `.html` URLs redirects once to the extensionless URL, with no loop and no `/about/` [R2.3].
+  - [x] 9.2 `/does-not-exist` shows the custom 404 page with working styles and nav [R6.3].
+  - [x] 9.3 A hashed `.js` or `.css` file has `cache-control: public, max-age=31536000, immutable`. `/about` has `max-age=0, must-revalidate` [R5.3].
+  - [x] 9.4 A test message on `/contact` submits, and the Forms tab still lists `contact`.
+  - [x] 9.5 If a redirect loops or ends in `/about/`, turn off Pretty URLs in the Netlify dashboard and redeploy. Not needed: no loop or trailing slash on the live site.
 
 Lighthouse was not run.
