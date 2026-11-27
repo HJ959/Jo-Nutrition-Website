@@ -27,9 +27,19 @@
     width: 90vw;
     min-width: 300px;
     max-width: 1200px;
+    border: 0;
 }
 
 .podcasts p {
     margin-top: 0.5em;
 }
 
+.quote {
+    margin: 1.5em auto;
+    max-width: 70ch;
+}
+
+.quote blockquote {
+    margin: 0;
+    font-style: italic;
+}
