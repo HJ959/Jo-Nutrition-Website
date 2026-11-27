@@ -2,25 +2,17 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const pages = [
-  { name: 'index',            template: 'index.html',             chunk: 'index' },
-  { name: 'about',            template: 'about.html',             chunk: 'about' },
-  { name: 'eatingDisorders',  template: 'eating-disorders.html',  chunk: 'eatingDisorders' },
-  { name: 'consultations',    template: 'consultations.html',     chunk: 'consultations' },
-  { name: 'qualifications',   template: 'qualifications.html',    chunk: 'qualifications' },
-  { name: 'contact',          template: 'contact.html',           chunk: 'contact' },
-  { name: 'nutritionalTherapy', template: 'nutritional-therapy.html', chunk: 'nutritionalTherapy' },
-  { name: 'podcast',          template: 'podcast.html',           chunk: 'podcast' },
-];
+const pages = require('./webpack.pages');
 
 module.exports = {
   mode: 'production',
 
-  entry: Object.fromEntries(pages.map(p => [p.chunk, `./src/${p.chunk === 'eatingDisorders' ? 'eating-disorders' : p.chunk === 'nutritionalTherapy' ? 'nutritional-therapy' : p.chunk}.js`])),
+  entry: Object.fromEntries(pages.map(p => [p.chunk, `./src/${p.script}`])),
 
   output: {
     filename: '[name].[contenthash:8].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true,
   },
 
