@@ -21,6 +21,10 @@ body {
     width: 100%;
 }
 
+html {
+    scroll-padding-block: 5rem;
+}
+
 #therapyhubLink {
     display: inline-block;
     background: #eceaf1;
