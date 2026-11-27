@@ -55,7 +55,7 @@ Each page has `src/<name>.html`, `src/<name>.js` and `src/<name>.css` (except wh
 | `nutritional-therapy.html` | `nutritionalTherapy` | JS/CSS files are `nutritional-therapy.*`. Venue image slides |
 | `consultations.html` | `consultations` | Largest page (9.5 KB), venue slides, JSON-LD, scroll listener |
 | `qualifications.html` | `qualifications` | Accreditation logos (BANT, NCFED, CNHC, Beeleaf) |
-| `podcast.html` | `podcast` | Lazy-loaded podcast iframe |
+| `podcast.html` | `podcast` | Lazy-loaded Spotify iframe (no `frameBorder`, `border: 0` in CSS), description in 5 paragraphs, "Memorable Quotes" `h2` with two `figure.quote` blocks |
 | `contact.html` | `contact` | Netlify form with honeypot |
 
 The chunk name (camelCase) differs from the file name (kebab-case) for two pages. The mapping lives in `webpack.prod.config.js`, where the entry path uses a ternary, and in `webpack.dev.config.js`. A new page must be added to both configs.
@@ -71,6 +71,10 @@ The chunk name (camelCase) differs from the file name (kebab-case) for two pages
 - Class names are camelCase (`.joImageAbout`, `.venueSlide`, `.consultLists`).
 
 ## Page template conventions
+- Landmarks (Phase 4, all 9 files including `404.html`): first child of `<body>` is `<a class="skipLink" href="#main">Skip to main content</a>`. The nav sits inside `<header>`. Page content is `<main id="main" tabindex="-1" class="container ...">` (the former `div.container`, same classes). `<footer>` stays outside `<main>` (the 404 has no footer).
+- Skip link CSS is in `main.css` after `.hidden`: off-screen via `transform` until focused, `z-index: 10` so it shows over the fixed nav (`z-index: 5`). `main:focus` has no outline.
+- `footer` is styled by element selector as a fixed bar in `main.css`. Do not use `<footer>` inside content (use `<figcaption>` for quote attributions).
+- Each page has exactly one `<h1>`, with `h2` below it and no skipped levels. `qualifications` and `contact` gained a visible `<h1 class="center">` plus `<div class="purpleLine">`. "Location" on `nutritional-therapy` and `consultations` is an `h2`.
 - `<nav class="topnav">` with a `<button id="burger">` and 8 `a.collapsable` links. The current page has `class="active"` and `aria-current="page"`.
 - `#loadOverlay` white div covers the page until `load` fires.
 - Each page has a unique title, meta description, canonical URL, Open Graph tags and a JSON-LD block.
@@ -99,7 +103,8 @@ These were noticed while mapping. None have been changed.
 8. **Webpack config duplication.** The dev config lists pages by hand, while the prod config uses a `pages` array. They can drift apart.
 9. **Dev build lacks `robots.txt` and `sitemap.xml`**, (the dev image rule now includes `webp`).
 10. ~~**Committed build output.**~~ Fixed 2026-11-27 (Phase 0): `dist/` and `dev/` are git-ignored, and Netlify builds `dist/`.
-11. **No custom 404 page.**
+11. ~~**No custom 404 page.**~~ `src/404.html` exists (built to `dist/404.html`, served by Netlify for unknown URLs).
+13. **Landmarks, headings and podcast text.** Fixed in Phase 4 (branch `phase-4-landmarks-and-content`, 4 commits). Checked by grep and build; the user checked visuals, Tab/skip link, the Spotify widget and the screen reader on 2026-11-27 and all looked good. Merge and push to `main` still pending the user's go-ahead. Lighthouse not run. Prod build after Phase 4: HTML files grew 100 to 291 bytes each, `shared.css` 5920 to 6195 bytes, `podcast.css` 446 to 540 bytes, JS unchanged.
 12. **Typos in copy and class names**: "Joanna oates" (lowercase "o") on `index.html`, `.affilatesLogo`.
 
 ## Working agreements for future changes
