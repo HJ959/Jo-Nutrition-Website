@@ -26,21 +26,22 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 2.6 Confirm the originals are byte-identical after the move (`git status` shows renames, not edits).
   - [x] 2.7 Commit: `Move originals to src/originals, add image script and WebP outputs`. The HTML still points at the old paths, so do task 3 before pushing or building for deploy.
 
-- [ ] 3. Image markup [R1.3 to R1.5, R1.8, R1.9]
-  - [ ] 3.1 `index.html`: hero gets `srcset`, `sizes`, `width`, `height`, `fetchpriority="high"`, no `loading`.
-  - [ ] 3.2 `about.html`: `srcset`, `sizes="(min-width: 1200px) 40vw, 80vw"`, `width`, `height`, no `loading`.
-  - [ ] 3.3 `nutritional-therapy.html`: portrait with `srcset`, `sizes`, `width`, `height`, `loading="lazy"`.
-  - [ ] 3.4 Venue images (3 in `consultations.html`, 3 in `nutritional-therapy.html`, 6 tags): point to the `.webp`, add `width`, `height`, `loading="lazy"`.
-  - [ ] 3.5 Logos in `qualifications.html`: `width`, `height`, `loading="lazy"`. Add the same to `bant.webp`.
-  - [ ] 3.6 West London Therapy Hub logo: add `loading="lazy"`. Add `width` and `height` only if the remote file's size can be read. Leave the source alone.
-  - [ ] 3.7 Check each sized `<img>` has `height: auto` in its CSS rule (`.homeImage`, `.joImageAbout`, `.logos`, `.affilatesLogo`, others found). Add where missing. Skip `.venueSlide`, which sets both.
-  - [ ] 3.8 Change the dev image rule in `webpack.dev.config.js` to include `webp`. Keep its CRLF line endings.
-  - [ ] 3.9 Run the R1.3 to R1.6 greps from `design.md`. Both builds pass and emit the `.webp` files.
-  - [ ] 3.10 Commit: `Serve responsive WebP images with explicit dimensions and lazy loading`.
+- [x] 3. Image markup [R1.3 to R1.5, R1.8, R1.9]
+  - [x] 3.1 `index.html`: hero gets `srcset`, `sizes`, `width`, `height`, `fetchpriority="high"`, no `loading`.
+  - [x] 3.2 `about.html`: `srcset`, `sizes="(min-width: 1200px) 40vw, 80vw"`, `width`, `height`, no `loading`.
+  - [x] 3.3 `nutritional-therapy.html`: portrait with `srcset`, `sizes`, `width`, `height`, `loading="lazy"`.
+  - [x] 3.4 Venue images (3 in `consultations.html`, 3 in `nutritional-therapy.html`, 6 tags): point to the `.webp`, add `width`, `height`, `loading="lazy"`.
+  - [x] 3.5 Logos in `qualifications.html`: `width`, `height`, `loading="lazy"`. Add the same to `bant.webp`.
+  - [x] 3.6 West London Therapy Hub logo: add `loading="lazy"`. Add `width` and `height` only if the remote file's size can be read. Leave the source alone.
+  - [x] 3.7 Check each sized `<img>` has `height: auto` in its CSS rule (`.homeImage`, `.joImageAbout`, `.logos`, `.affilatesLogo`, others found). Add where missing. Skip `.venueSlide`, which sets both.
+  - [x] 3.8 Change the dev image rule in `webpack.dev.config.js` to include `webp`. Keep its CRLF line endings.
+  - [x] 3.9 Run the R1.3 to R1.6 greps from `design.md`. Both builds pass and emit the `.webp` files.
+  - [x] 3.10 Commit: `Serve responsive WebP images with explicit dimensions and lazy loading`.
 
 - [ ] 4. Confirm originals are not shipped [decision 3, revised]
   - [ ] 4.1 After `npm run build-prod` and `npm run build-dev`, confirm `dist/media` and `dev/media` contain none of the 6 originals and every `media/` path in the HTML exists.
-  - [ ] 4.2 The unused `NEDDE LOGO 2 with layers -inverted copy.webp` is still copied (25 KB). Left alone, not part of this phase.
+    - `dist/media`: clean, all paths exist (checked). `dev/media`: all paths exist, but still holds the 6 originals from earlier builds (`build-dev` does not delete). Waiting for the user to approve deleting those 6 git-ignored files.
+  - [x] 4.2 The unused `NEDDE LOGO 2 with layers -inverted copy.webp` is still copied (25 KB). Left alone, not part of this phase.
 
 - [ ] 5. Shared CSS chunk [R2.1 to R2.4]
   - [ ] 5.1 Add `optimization.splitChunks.cacheGroups.sharedStyles` to `webpack.prod.config.js` (as in `design.md`).
