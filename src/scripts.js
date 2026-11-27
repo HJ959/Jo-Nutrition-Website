@@ -1,8 +1,3 @@
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("loadOverlay");
-  if (overlay) overlay.classList.add("hidden");
-});
-
 const navbarItems = document.getElementsByClassName("collapsable");
 
 export function navMenuMover() {
