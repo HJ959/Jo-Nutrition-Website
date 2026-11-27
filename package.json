@@ -8,8 +8,8 @@
     "images": "node scripts/optimise-images.js",
     "env": "env",
     "start": "npm run build-dev && webpack serve --config webpack.dev.config.js",
-    "build-prod": "webpack --config webpack.prod.config.js && mkdirp -p dist/media && cp -r src/media/* dist/media && cp -r src/favicon_io/* dist/ && cp src/robots.txt src/sitemap.xml dist/",
-    "build-dev": "mkdirp -p dev/media && cp -r src/media/* dev/media && cp -r src/favicon_io/* dev/ && webpack --config webpack.dev.config.js",
+    "build-prod": "webpack --config webpack.prod.config.js && mkdirp -p dist/media && cp -r src/media/* dist/media && cp -r src/fonts dist/fonts && cp -r src/favicon_io/* dist/ && cp src/robots.txt src/sitemap.xml dist/",
+    "build-dev": "mkdirp -p dev/media && cp -r src/media/* dev/media && cp -r src/fonts dev/fonts && cp -r src/favicon_io/* dev/ && webpack --config webpack.dev.config.js",
     "build-all": "npm run clean && npm run build-prod && npm run build-dev"
   },
   "browserslist": [

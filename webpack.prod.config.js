@@ -54,7 +54,16 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              // /fonts/ files are copied by the build scripts, not bundled.
+              url: { filter: (url) => !url.startsWith('/fonts/') },
+            },
+          },
+        ],
       },
       {
         test: /\.js$/,

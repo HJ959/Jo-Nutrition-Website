@@ -59,18 +59,22 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
     - Shared CSS 13,407 to 5,777 bytes (1,890 gz). Page CSS 335 to 1,428 bytes. Rule diff: no change in meaning. Only notation differs (hex/hsla colours, `0px` to `0`, `::before` to `:before`, `to` to `100%`, dropped quotes).
   - [x] 6.4 Commit: `Minify CSS in the production build`.
 
-- [ ] 7. Self-hosted Open Sans [R3.2 to R3.8]
-  - [ ] 7.1 Fetch the Google Fonts CSS (`Open+Sans:wght@400;700`) with a modern `User-Agent`. Download the WOFF2 file(s) from the `latin` block into `src/fonts/`. Record file names and sizes.
-  - [ ] 7.2 Scan `src/*.html` for characters outside the `latin` ranges, including those written as HTML entities. Add `latin-ext` if any are found.
-  - [ ] 7.3 Check the licence on the font's Google Fonts page. Write `src/fonts/LICENSE.md` (SIL OFL 1.1, source URL, date, what was seen).
-  - [ ] 7.4 Add `@font-face` to the top of `main.css` (`font-display: swap`, weight `400 700` if one variable file, otherwise two rules).
-  - [ ] 7.5 Add `cp -r src/fonts dist/fonts` to `build-prod` and `cp -r src/fonts dev/fonts` to `build-dev`.
-  - [ ] 7.6 Add the preload tag to the 9 HTML files, before the stylesheet links.
-  - [ ] 7.7 Remove the Lexend/Open Sans `<link>` (two lines in each file) from the 9 HTML files. Keep the Material Symbols link and both `preconnect` tags.
-  - [ ] 7.8 Add the `/fonts/*` `Cache-Control: public, max-age=2592000` header to `netlify.toml`.
-  - [ ] 7.9 Build. Confirm `dist/*.css` still contains `/fonts/open-sans...` (css-loader left it alone) and `dist/` has no hashed copy of the font. If css-loader rewrites it, switch to `url: { filter }` in the CSS rule rather than a hashed name.
-  - [ ] 7.10 Run the R3.3, R3.4 and R3.6 greps from `design.md`.
-  - [ ] 7.11 Commit: `Self-host Open Sans, drop Lexend and the Google Fonts stylesheet`.
+- [x] 7. Self-hosted Open Sans [R3.2 to R3.8]
+  - [x] 7.1 Fetch the Google Fonts CSS (`Open+Sans:wght@400;700`) with a modern `User-Agent`. Download the WOFF2 file(s) from the `latin` block into `src/fonts/`. Record file names and sizes.
+    - Google returns one URL for 400 and 700 (variable font). One file: `src/fonts/open-sans-latin.woff2`, 48,320 bytes.
+  - [x] 7.2 Scan `src/*.html` for characters outside the `latin` ranges, including those written as HTML entities. Add `latin-ext` if any are found.
+    - None found (entities decoded). `latin-ext` not needed.
+  - [x] 7.3 Check the licence on the font's Google Fonts page. Write `src/fonts/LICENSE.md` (SIL OFL 1.1, source URL, date, what was seen).
+    - `fonts.google.com` is JS-rendered and returned nothing. Confirmed OFL from `google/fonts` `METADATA.pb` and copied `OFL.txt` into `LICENSE.md`.
+  - [x] 7.4 Add `@font-face` to the top of `main.css` (`font-display: swap`, weight `400 700` if one variable file, otherwise two rules).
+  - [x] 7.5 Add `cp -r src/fonts dist/fonts` to `build-prod` and `cp -r src/fonts dev/fonts` to `build-dev`.
+  - [x] 7.6 Add the preload tag to the 9 HTML files, before the stylesheet links.
+  - [x] 7.7 Remove the Lexend/Open Sans `<link>` (two lines in each file) from the 9 HTML files. Keep the Material Symbols link and both `preconnect` tags.
+  - [x] 7.8 Add the `/fonts/*` `Cache-Control: public, max-age=2592000` header to `netlify.toml`.
+  - [x] 7.9 Build. Confirm `dist/*.css` still contains `/fonts/open-sans...` (css-loader left it alone) and `dist/` has no hashed copy of the font. If css-loader rewrites it, switch to `url: { filter }` in the CSS rule rather than a hashed name.
+    - It did rewrite it: both builds failed with "Can't resolve '/fonts/...'". Fixed with `url: { filter }` in the css-loader options of both configs (dev keeps CRLF). Now `dist/*.css` keeps `/fonts/open-sans-latin.woff2` and `dist/` has no hashed copy.
+  - [x] 7.10 Run the R3.3, R3.4 and R3.6 greps from `design.md`.
+  - [x] 7.11 Commit: `Self-host Open Sans, drop Lexend and the Google Fonts stylesheet`.
 
 - [ ] 8. Verify
   - [ ] 8.1 `npm run build-prod` and `npm run build-dev` both pass.
