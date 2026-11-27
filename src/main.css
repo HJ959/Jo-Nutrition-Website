@@ -124,6 +124,29 @@ body {
     display: none;
 }
 
+/* Skip link: off-screen until focused */
+.skipLink {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 10;
+    padding: 12px 20px;
+    background-color: var(--navy);
+    color: var(--white);
+    border-radius: 20px;
+    transform: translateY(-300%);
+}
+
+.skipLink:focus {
+    transform: none;
+    outline: 3px solid var(--black);
+    outline-offset: 2px;
+}
+
+main:focus {
+    outline: none;
+}
+
 /* add a footer */
 footer {
     position: fixed;
