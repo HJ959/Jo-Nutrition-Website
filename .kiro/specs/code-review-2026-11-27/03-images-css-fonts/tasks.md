@@ -89,7 +89,9 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 8.6 Update `.kiro/steering/project-summary.md`.
   - [x] 8.7 Ask before pushing the branch. Approved and pushed.
 
-- [ ] 9. Check on a deploy preview (**needs the user**)
-  - User confirmed real bold looks better (decision 2 holds). Still to do: open the PR and look at the preview.
-  - [ ] 9.1 `index` (hero, bold headings and nav), `qualifications` (logos), `consultations` (slideshow), `404` page. Report R2.6 and appearance as "not visually verified" until done.
-  - [ ] 9.2 Lighthouse is not run here. Do not quote a score.
+- [x] 9. Visual check (**done by the user**)
+  - User confirmed real bold looks better (decision 2 holds).
+  - [x] 9.1 No PR or Deploy Preview was used. The branch was merged to `main` (`73df419`) and the user checked the pages on 2026-11-27 and reported they look visually good. The user did not list which pages, so the per-page list (`index`, `qualifications`, `consultations`, `404`) is not individually confirmed.
+  - [x] 9.2 Lighthouse is not run here. Do not quote a score.
+- [x] 10. Housekeeping (2026-11-27)
+  - Merged branches `phase-0-netlify-build`, `phase-2-seo-urls` and `phase-3-images-css-fonts` deleted locally and on origin. Old tips: `44c06ac`, `a17cd46`, `66dae30`.

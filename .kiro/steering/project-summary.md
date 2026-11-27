@@ -92,7 +92,7 @@ These were noticed while mapping. None have been changed.
 1. **Sitemap and canonical mismatch.** Fixed in Phase 2: all use extensionless URLs. Netlify's Pretty URLs setting may still interact with the redirect rules. Check on the deploy preview.
 2. ~~**`robots.txt` blocks `/media/`.**~~ Fixed 2026-11-27 (`5f0e64b`): it now allows everything and lists the sitemap.
 3. **Viewport `maximum-scale=1.0`** on `index.html` (check the other pages) stops pinch zoom, which fails WCAG 1.4.4.
-4. ~~**Unoptimised images.**~~ Fixed in Phase 3: portraits are 800 and 1200 px WebP with `srcset`, `sizes`, `width`/`height`; the hero has `fetchpriority="high"`; venue images and logos are lazy. Originals live in `src/originals/`. To change an image: edit the original, run `npm run images`, commit the WebP. Not visually verified.
+4. ~~**Unoptimised images.**~~ Fixed in Phase 3: portraits are 800 and 1200 px WebP with `srcset`, `sizes`, `width`/`height`; the hero has `fetchpriority="high"`; venue images and logos are lazy. Originals live in `src/originals/`. To change an image: edit the original, run `npm run images`, commit the WebP. Phase 3 is merged to `main`; the user checked the pages on 2026-11-27 and they look good (Lighthouse not run).
 5. **Render-blocking third-party CSS.** Open Sans and Lexend are fixed in Phase 3. The Material Symbols stylesheet (full font for one menu icon) still loads on every page.
 6. **Load overlay hides content until `window.load`.** This delays visible content until all images are fetched, which hurts LCP. If JS fails, the overlay never hides. `index.html` also inlines the overlay style, duplicating `main.css`.
 7. **Duplicated per-page JS.** The burger and resize wiring is repeated in all 8 entries.
