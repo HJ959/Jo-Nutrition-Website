@@ -17,14 +17,14 @@ Implements `design.md`. Requirement references are in brackets. Work on branch `
   - [x] 1.4 Record the font weights used in the CSS (R3.1): `main.css` `a`, `ul li::before`, `h1`/`h2` bold and the footer button `500`.
   - [x] 1.5 Commit: `Add Phase 3 baseline measurements`.
 
-- [ ] 2. Image script and originals folder [R1.2]
-  - [ ] 2.1 `git mv` the 6 originals (`JoImageHome.jpg`, `JoImageAbout.jpg`, `JoImageNutrition.jpg`, `reception-1r_.png`, `06-the-woodland-room-4r.png`, `07-the sunshine-room-5.png`) from `src/media/` to `src/originals/`. `build-prod` and `build-dev` only copy `src/media`, so the originals are no longer built or served.
-  - [ ] 2.2 Add `scripts/optimise-images.js`. It reads from `src/originals/` and writes to `src/media/` (sharp, `rotate()`, `resize({ width, withoutEnlargement: true })`, `webp({ quality: 80 })`). Print width, height and bytes of each output.
-  - [ ] 2.3 Add `"images": "node scripts/optimise-images.js"` to `package.json`.
-  - [ ] 2.4 Run it. Outputs: `<name>-800.webp` and `<name>-1200.webp` for the 3 portraits. One 640 px `.webp` for each of the 3 venue PNGs (sunshine-room name without the space).
-  - [ ] 2.5 Open a few outputs in the image viewer and check for banding or artefacts. Raise quality if needed and note it.
-  - [ ] 2.6 Confirm the originals are byte-identical after the move (`git status` shows renames, not edits).
-  - [ ] 2.7 Commit: `Move originals to src/originals, add image script and WebP outputs`. The HTML still points at the old paths, so do task 3 before pushing or building for deploy.
+- [x] 2. Image script and originals folder [R1.2]
+  - [x] 2.1 `git mv` the 6 originals (`JoImageHome.jpg`, `JoImageAbout.jpg`, `JoImageNutrition.jpg`, `reception-1r_.png`, `06-the-woodland-room-4r.png`, `07-the sunshine-room-5.png`) from `src/media/` to `src/originals/`. `build-prod` and `build-dev` only copy `src/media`, so the originals are no longer built or served.
+  - [x] 2.2 Add `scripts/optimise-images.js`. It reads from `src/originals/` and writes to `src/media/` (sharp, `rotate()`, `resize({ width, withoutEnlargement: true })`, `webp({ quality: 80 })`). Print width, height and bytes of each output.
+  - [x] 2.3 Add `"images": "node scripts/optimise-images.js"` to `package.json`.
+  - [x] 2.4 Run it. Outputs: `<name>-800.webp` and `<name>-1200.webp` for the 3 portraits. One 640 px `.webp` for each of the 3 venue PNGs (sunshine-room name without the space).
+  - [x] 2.5 Open a few outputs in the image viewer and check for banding or artefacts. Raise quality if needed and note it.
+  - [x] 2.6 Confirm the originals are byte-identical after the move (`git status` shows renames, not edits).
+  - [x] 2.7 Commit: `Move originals to src/originals, add image script and WebP outputs`. The HTML still points at the old paths, so do task 3 before pushing or building for deploy.
 
 - [ ] 3. Image markup [R1.3 to R1.5, R1.8, R1.9]
   - [ ] 3.1 `index.html`: hero gets `srcset`, `sizes`, `width`, `height`, `fetchpriority="high"`, no `loading`.

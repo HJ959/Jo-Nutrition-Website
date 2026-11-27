@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -R dist/* && rm -R dev/* && mkdirp -p dist/media && mkdirp -p dev/media",
+    "images": "node scripts/optimise-images.js",
     "env": "env",
     "start": "npm run build-dev && webpack serve --config webpack.dev.config.js",
     "build-prod": "webpack --config webpack.prod.config.js && mkdirp -p dist/media && cp -r src/media/* dist/media && cp -r src/favicon_io/* dist/ && cp src/robots.txt src/sitemap.xml dist/",
