@@ -9,7 +9,7 @@ Static, multi-page marketing site for Joanna Oates (nutritional therapist and ps
 - `sharp` is in devDependencies but nothing in the repo uses it.
 - Node 26 locally (v26.5.0) and on Netlify (`NODE_VERSION = "26"` in `netlify.toml`). There is no `.nvmrc`.
 - Hosted on Netlify. Netlify builds on every push to `main`. `netlify.toml` sets `command = "npm run build-prod"` and `publish = "dist"`, and overrides the dashboard, which still shows "Build command: Not set". Pushes to other branches are not built: Deploy Previews need a pull request, and branch deploys are off.
-- The contact form uses Netlify Forms (`netlify-honeypot`). Netlify detects it in the built `dist/contact.html`. There is no `_redirects` file, and `netlify.toml` has no headers or redirects yet.
+- The contact form uses Netlify Forms (`netlify-honeypot`). Netlify detects it in the built `dist/contact.html`. There is no `_redirects` file. `netlify.toml` has 8 forced 301 redirects from `/<page>.html` to the extensionless URL, and immutable cache headers for `/*.js` and `/*.css`. Netlify serves `dist/404.html` for unknown URLs.
 - Fonts and icons come from Google Fonts: Lexend, Open Sans, Material Symbols Outlined.
 
 ## Commands
@@ -72,10 +72,10 @@ The chunk name (camelCase) differs from the file name (kebab-case) for two pages
 - `<nav class="topnav">` with a `<button id="burger">` and 8 `a.collapsable` links. The current page has `class="active"` and `aria-current="page"`.
 - `#loadOverlay` white div covers the page until `load` fires.
 - Each page has a unique title, meta description, canonical URL, Open Graph tags and a JSON-LD block.
-- Internal links are root-relative with `.html` (for example `/about.html`). Images use relative `media/...` paths.
+- Internal links are root-relative and extensionless (`/about`, `/` for home). Canonical and `og:url` use the same form. Every page has favicon, manifest, `og:image` (`/media/og-image.jpg`, 1200x630, 41.6 KB), `og:site_name` and `twitter:card` tags. Images use relative `media/...` paths.
 
 ## SEO files
-- `sitemap.xml`: 8 URLs, last modified 2025-02-03, generated at xml-sitemaps.com (per README).
+- `sitemap.xml`: 8 URLs, last modified 2026-11-27, generated at xml-sitemaps.com (per README).
 - `robots.txt`: `User-agent: *`, `Allow: /` and `Sitemap: https://joannaoates.com/sitemap.xml`. Live since 2026-11-27. Before that, the build never shipped it.
 
 ## Build output
@@ -87,7 +87,7 @@ The chunk name (camelCase) differs from the file name (kebab-case) for two pages
 ## Observations (not acted on)
 These were noticed while mapping. None have been changed.
 
-1. **Sitemap and canonical mismatch.** Sitemap URLs have no extension (`/about`), but canonicals and nav links use `/about.html`. Netlify's default "Pretty URLs" setting may serve both forms, which would give two URLs per page. Check the Netlify dashboard setting before changing either side.
+1. **Sitemap and canonical mismatch.** Fixed in Phase 2: all use extensionless URLs. Netlify's Pretty URLs setting may still interact with the redirect rules. Check on the deploy preview.
 2. ~~**`robots.txt` blocks `/media/`.**~~ Fixed 2026-11-27 (`5f0e64b`): it now allows everything and lists the sitemap.
 3. **Viewport `maximum-scale=1.0`** on `index.html` (check the other pages) stops pinch zoom, which fails WCAG 1.4.4.
 4. **Unoptimised images.** `JoImageNutrition.jpg` is 811 KB, `JoImageHome.jpg` 520 KB, `JoImageAbout.jpg` 472 KB, and the venue PNGs are 126 to 167 KB each. There is no `srcset`, WebP/AVIF, `width`/`height`, or `fetchpriority` on the hero. `index.html` is the page where the hero is the LCP element. `sharp` is installed but unused.
@@ -104,6 +104,6 @@ These were noticed while mapping. None have been changed.
 - Edit `src/` only. Do not hand-edit `dev/` or `dist/`, and do not commit them.
 - A push to `main` deploys to production, so ask before pushing. To check a change before it goes live, open a pull request and use its Netlify Deploy Preview.
 - Keep plain HTML/CSS/vanilla JS. Ask before adding a dependency or framework.
-- Adding a page means: new `src/<name>.{html,js,css}`, an entry in both webpack configs, a nav link on every page, a `sitemap.xml` entry, and a build check.
+- Adding a page means: new `src/<name>.{html,js,css}`, an entry in `webpack.pages.js` (shared by both configs), a redirect rule in `netlify.toml`, a nav link on every page, a `sitemap.xml` entry, and a build check.
 - After changes, run `npm run build-prod` and report asset sizes. Lighthouse and a browser are not available in this environment unless confirmed otherwise.
 - Ask before running `npm run clean`, `npm audit fix --force`, or anything that deletes files.
